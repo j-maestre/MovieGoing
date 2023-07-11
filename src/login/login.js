@@ -45,15 +45,35 @@ function LogIn(){
         let username = document.getElementById('fl_user_name').value;
         let passwd = document.getElementById('fl_passwd').value;
 
+        if(username && passwd){
+            if(CheckUser(username, passwd)){
+                alert("Login correcto");
+                // Go to home
+            }
+        }
+
 
     })
 }
 
-function CheckNewUser(name){
+function CheckUser(name, passwd = false){
     let isValid = true;
     for ( var i = 0, len = localStorage.length; i < len; i++){
         if(localStorage.key(i) == name){
-            isValid = false;
+
+            // El usuario ya existe
+
+            !passwd?isValid = false:null;
+
+            // El usuario existe, comprobar que la contraseña coincide
+            if(passwd){
+                let user = JSON.parse(localStorage.getItem(localStorage.key(i)));
+                console.log(user);
+                if(passwd == user.Password){
+                    isValid = true;
+                }
+
+            }
         }
     }
 
@@ -104,7 +124,7 @@ function SingIn(){
 
             console.log(user);
 
-            if(CheckNewUser(username)){
+            if(CheckUser(username)){
                 localStorage.setItem(username, JSON.stringify(user));
                 alert("usuario creado");
             }else{
