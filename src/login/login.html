@@ -3,6 +3,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../index.css">
 </head>
 <body>
 
@@ -17,11 +18,11 @@
           <h2><svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-coffee" href="#icon-coffee" /></svg>Login</h2>
           <label class="input">
-            <input class="input__field" type="text" placeholder="Username" />
-            <input class="input__field" type="password" placeholder="Password" />
+            <input id="fl_user_name" class="input__field" type="text" placeholder="Username" />
+            <input id="fl_passwd" class="input__field" type="password" placeholder="Password" />
           </label>
           <div class="button-group">
-            <button class="btn_submit">Log in</button>
+            <button class="btn_submit" id="submit_login">Log in</button>
             <button type="reset">Reset</button>
           </div>
           <div class="change_form_container">
@@ -34,15 +35,15 @@
           <h2><svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-coffee" href="#icon-coffee" /></svg>Create account</h2>
           <label class="input">
-            <input class="input__field" type="text" placeholder="Username" />
-            <input class="input__field" type="text" placeholder="Name" />
-            <input class="input__field" type="text" placeholder="Last name" />
-            <input class="input__field" type="text" placeholder="Email" />
-            <input class="input__field" type="password" placeholder="Password" />
-            <input class="input__field" type="password" placeholder="Repeat password" />
+            <input id="fc_user_name" class="input__field" type="text" placeholder="Username" />
+            <input id="fc_name" class="input__field" type="text" placeholder="Name" />
+            <input id="fc_last_name" class="input__field" type="text" placeholder="Last name" />
+            <input id="fc_email" class="input__field" type="email" placeholder="Email" />
+            <input id="fc_passwd" class="input__field" type="password" placeholder="Password" />
+            <input id="fc_passwd2" class="input__field" type="password" placeholder="Repeat password" />
           </label>
           <div class="button-group">
-            <button class="btn_submit">Create</button>
+            <button class="btn_submit" id="submit_create">Create</button>
             <button type="reset">Reset</button>
           </div>
 
