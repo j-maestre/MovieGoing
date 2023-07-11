@@ -48,6 +48,8 @@ function LogIn(){
         if(username && passwd){
             if(CheckUser(username, passwd)){
                 alert("Login correcto");
+                localStorage.setItem("islogged", true);
+                localStorage.setItem("UserLogged", localStorage.getItem(username));
                 // Go to home
             }
         }
