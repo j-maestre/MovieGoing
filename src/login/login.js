@@ -4,8 +4,8 @@ window.addEventListener('load', onDocumentReady, false);
 function onDocumentReady(){
     console.log("Document ready");
 
-    let islogged = localStorage.getItem("islogged");
-    let username = localStorage.getItem("userName");
+    //let islogged = localStorage.getItem("islogged");
+    //let username = localStorage.getItem("userName");
 
     // Mostramos solo el formulario de iniciar sesion
     //document.getElementById("singin").style.display = "none";
@@ -19,18 +19,12 @@ function onDocumentReady(){
         LogIn();
     });
 
+    localStorage.setItem("islogged",false);
+    localStorage.setItem("UserLogged",null);
+
     LogIn();
 
-    let login = false;
-
-    // Si ha guardado inciar sesion automaticamente
-    if(islogged && username){
-        // Go to home
-    }
-
-    if(login){
-    }
-
+    
 }
 
 function LogIn(){
@@ -51,7 +45,8 @@ function LogIn(){
                 localStorage.setItem("islogged", true);
                 localStorage.setItem("UserLogged", localStorage.getItem(username));
                 // Go to home
-                
+                window.location.href = "../home/home.html";
+
             }else{
                 alert("Usuario o contraseña incorrectos");
             }
