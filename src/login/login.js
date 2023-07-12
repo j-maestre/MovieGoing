@@ -46,11 +46,14 @@ function LogIn(){
         let passwd = document.getElementById('fl_passwd').value;
 
         if(username && passwd){
-            if(CheckUser(username, passwd)){
+            if(CheckPasswd(username, passwd)){
                 alert("Login correcto");
                 localStorage.setItem("islogged", true);
                 localStorage.setItem("UserLogged", localStorage.getItem(username));
                 // Go to home
+                
+            }else{
+                alert("Usuario o contraseña incorrectos");
             }
         }
 
@@ -58,28 +61,32 @@ function LogIn(){
     })
 }
 
-function CheckUser(name, passwd = false){
-    let isValid = true;
-    for ( var i = 0, len = localStorage.length; i < len; i++){
+// Check si la contraseña y el usuario el correcto
+function CheckPasswd(name, passwd){
+    for(let i = 0; i < localStorage.length; i++){
         if(localStorage.key(i) == name){
-
-            // El usuario ya existe
-
-            !passwd?isValid = false:null;
-
-            // El usuario existe, comprobar que la contraseña coincide
-            if(passwd){
-                let user = JSON.parse(localStorage.getItem(localStorage.key(i)));
-                console.log(user);
-                if(passwd == user.Password){
-                    isValid = true;
-                }
-
+            let user = JSON.parse(localStorage.getItem(localStorage.key(i)));
+            console.log(user);
+            if(passwd == user.Password){
+                return true;
             }
+
         }
     }
 
-    return isValid;
+    return false;
+}
+
+function CheckUser(name, passwd = false){
+
+    for ( let i = 0; i < localStorage.length; i++){
+        if(localStorage.key(i) == name){
+            // El usuario ya existe
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function SingIn(){

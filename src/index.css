@@ -19,3 +19,62 @@
  h1, h2, h3 {
 	 font-weight: 900;
 }
+
+.input__label {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * .5);
+	margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * .5);
+	background: pink;
+	white-space: nowrap;
+	transform: translate(0, 0);
+	transform-origin: 0 0;
+	background: var(--color-background);
+	transition: transform 120ms ease-in;
+	font-weight: bold;
+	line-height: 1.2;
+}
+.input__field {
+	box-sizing: border-box;
+	display: block;
+	max-width: 70%;
+	border: 3px solid currentColor;
+	padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
+	color: currentColor;
+	background: transparent;
+	border-radius: var(--size-radius);
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.input__field:focus + .input__label, .input__field:not(:placeholder-shown) + .input__label {
+	transform: translate(0.25rem, -65%) scale(0.8);
+	color: var(--color-accent);
+}
+.button-group {
+	margin-top: calc(var(--size-bezel) * 2.5);
+}
+button {
+	color: currentColor;
+	padding: var(--size-bezel) calc(var(--size-bezel) * 2);
+	background: var(--color-accent);
+	border: none;
+	border-radius: var(--size-radius);
+	font-weight: 900;
+}
+button[type=reset] {
+	background: var(--color-background);
+	font-weight: 200;
+}
+button + button {
+	margin-left: calc(var(--size-bezel) * 2);
+}
+.icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin-right: 0.5em;
+}
+.hidden {
+	display: none;
+}
