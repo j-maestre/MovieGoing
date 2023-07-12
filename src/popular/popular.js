@@ -41,6 +41,30 @@ function PrintMovies(data){
         img.src = img_path + value.poster_path ;
         img.classList.add("img_poster");
         newDiv.appendChild(img);
+
+        // Rating
+        let rating = document.createElement("p");
+        rating.classList.add("rating");
+        if(value.vote_average < 4.0){
+          rating.classList.add("very_bad_rating");
+        }
+        if(value.vote_average >= 4.0 && value.vote_average < 5.3){
+          rating.classList.add("bad_rating");
+        }
+        
+        if(value.vote_average >= 5.3 && value.vote_average < 6.5){
+          rating.classList.add("normal_rating");
+        }
+        
+        if(value.vote_average >= 6.5 && value.vote_average < 8.0){
+          rating.classList.add("good_rating");
+        }
+        
+        if(value.vote_average >= 8.0){
+          rating.classList.add("very_good_rating");
+        }
+        rating.innerHTML = parseFloat(value.vote_average).toFixed(1);
+        newDiv.appendChild(rating);
         
         // Title
         let title = document.createElement("p");
