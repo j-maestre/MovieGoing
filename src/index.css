@@ -114,3 +114,51 @@ button + button {
 	 position: relative;
 	 margin-top: 10px;
 }
+
+/* Nav bar menu */
+
+li{
+    display: inline;
+    padding: 10px;
+    float: left;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px gray;
+    margin: 20px;
+	cursor: pointer;
+
+}
+li {
+    position: relative;
+}
+li::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: #18272f;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+li:hover::before, .active::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+.perfil{
+    float: right;
+    
+}
+.logomoviegoing{
+    width: 100px;
+    margin-top: -15px;
+    margin-left: -15px;
+}
+
+li a{
+    text-decoration: none;
+    color: black;
+}
+/* End Nav bar menu */
