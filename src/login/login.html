@@ -17,11 +17,20 @@
         <div class="card" id="login">
           <h2><svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-coffee" href="#icon-coffee" /></svg>Login</h2>
+          <div class="input_container">
+            <label class="input">
+              <input id="fl_user_name" class="input__field" type="text" placeholder=" " />
+              <span class="input__label">Username</span>
+            </label>
+          </div>
+          
+          <div  class="input_container">
+            <label class="input">
+              <input id="fl_passwd" class="input__field" type="password" placeholder=" " />
+              <span class="input__label">Password</span>
+            </label>
+          </div>
 
-          <label class="input">
-            <input id="fl_user_name" class="input__field" type="text" placeholder="Username" />
-            <input id="fl_passwd" class="input__field" type="password" placeholder="Password" />
-          </label>
           <div class="button-group">
             <button class="btn_submit" id="submit_login">Log in</button>
             <button type="reset">Reset</button>
@@ -35,14 +44,49 @@
         <div class="card" id="singin">
           <h2><svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-coffee" href="#icon-coffee" /></svg>Create account</h2>
-          <label class="input">
-            <input id="fc_user_name" class="input__field" type="text" placeholder="Username" />
-            <input id="fc_name" class="input__field" type="text" placeholder="Name" />
-            <input id="fc_last_name" class="input__field" type="text" placeholder="Last name" />
-            <input id="fc_email" class="input__field" type="email" placeholder="Email" />
-            <input id="fc_passwd" class="input__field" type="password" placeholder="Password" />
-            <input id="fc_passwd2" class="input__field" type="password" placeholder="Repeat password" />
-          </label>
+
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_user_name" class="input__field" type="text" placeholder=" " />
+                <span class="input__label">Username</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_name" class="input__field" type="text" placeholder=" " />
+                <span class="input__label">Name</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_last_name" class="input__field" type="text" placeholder=" " />
+                <span class="input__label">Last name</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_email" class="input__field" type="email" placeholder=" " />
+                <span class="input__label">Email</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_passwd" class="input__field" type="password" placeholder=" " />
+                <span class="input__label">Password</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_passwd2" class="input__field" type="password" placeholder=" " />
+                <span class="input__label">Repeat password</span>
+              </label>
+            </div>
+
           <div class="button-group">
             <button class="btn_submit" id="submit_create">Create</button>
             <button type="reset">Reset</button>

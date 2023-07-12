@@ -79,37 +79,38 @@ button + button {
 	display: none;
 }
 
-.card {
-	background: var(--color-background);
-	padding: calc(4 * var(--size-bezel));
-	/*padding: 10px;*/
-	margin-top: calc(4 * var(--size-bezel));
-	border-radius: var(--size-radius);
-	border: 3px solid var(--color-shadow, currentColor);
-	box-shadow: 0.5rem 0.5rem 0 var(--color-shadow, currentColor);
-	max-width: 70%;
-	min-height: 50%;
+ .card {
+	 background: var(--color-background);
+	 padding: calc(4 * var(--size-bezel));
+     /*padding: 10px;*/
+	 margin-top: calc(4 * var(--size-bezel));
+	 border-radius: var(--size-radius);
+	 border: 3px solid var(--color-shadow, currentColor);
+	 box-shadow: 0.5rem 0.5rem 0 var(--color-shadow, currentColor);
+     max-width: 70%;
+     min-height: 50%;
 }
-.card--inverted {
-	--color-background: var(--color-dark);
-	color: var(--color-light);
-	--color-shadow: var(--color-accent);
+ .card--inverted {
+	 --color-background: var(--color-dark);
+	 color: var(--color-light);
+	 --color-shadow: var(--color-accent);
 }
-.card--accent {
-	--color-background: var(--color-signal);
-	--color-accent: var(--color-light);
-	color: var(--color-dark);
+ .card--accent {
+	 --color-background: var(--color-signal);
+	 --color-accent: var(--color-light);
+	 color: var(--color-dark);
 }
-.card *:first-child {
-	margin-top: 0;
+ .card *:first-child {
+	 margin-top: 0;
 }
-.l-design-widht {
-   /*max-width: 40rem;*/
-   width: 60%;
-   padding: 1rem;
-   margin-left: 15%;
+ .l-design-widht {
+	/*max-width: 40rem;*/
+    width: 60%;
+	padding: 1rem;
+    margin-left: 15%;
 }
 
 .input {
-	position: relative;
+	 position: relative;
+	 margin-top: 10px;
 }
