@@ -1,0 +1,7 @@
+.movies_container{
+    display: flex;
+}
+
+.movie{
+    width: 20%;
+}
