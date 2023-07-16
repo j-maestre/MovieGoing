@@ -1,0 +1,102 @@
+
+.details_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+
+.img_poster{
+    width: 350px;
+    height: auto;
+    transition: 0.3s ease-out;
+    
+}
+
+
+
+.movie{
+    width: 80%;
+    height: auto;
+    /*height: 350px;*/
+    /*padding: 10px;*/
+    /*margin-right: 10%;*/
+    border-radius: var(--size-radius);
+	border: 3px solid var(--color-shadow, currentColor);
+	box-shadow: 0.5rem 0.5rem 0 var(--color-soft-shadow, currentColor);
+    margin: 20px;
+    margin-bottom: 30px;
+    transition: 0.3s ease-out;
+    overflow: hidden;
+    position: relative;
+    /*border-bottom: 1px solid rgba(31.5, 31.5, 31.5, 1);*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--color-background);
+    
+}
+
+.custom_bc{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-image: linear-gradient(to right, rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 31.5, 0.84) 50%, rgba(31.5, 31.5, 31.5, 0.84) 100%);
+    margin: 0 !important;    
+}
+
+.movie_info{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin-left: 35px;
+}
+
+.movie_info *{
+    color: white;
+}
+
+
+.rating{
+    border-radius: 100px;
+    padding: 8px;
+    color: #000;
+}
+
+.movie_link {
+    text-decoration: none;
+    list-style: none;
+    transform: translateY(20px);
+    transition: 0.5s;
+    opacity: 1;
+    position: relative;
+    display: inline-block;
+    color: white;
+}
+
+.movie_link::before {
+    content: '';
+    background: #fab700;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.movie_link:hover {
+    background-image: linear-gradient(to right, #fab700, #fab700 50%, #000 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.movie_link:hover::before {
+    width: 100%;
+}
