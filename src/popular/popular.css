@@ -9,6 +9,7 @@
 .movie{
     width: 250px;
     height: auto;
+    max-height: 477px;
     /*height: 350px;*/
     padding: 10px;
     border-radius: var(--size-radius);
@@ -19,22 +20,22 @@
     transition: 0.3s ease-out;
     overflow: hidden;
     position: relative;
+    background-color: var(--color-background);
 }
 
 .rating{
     position: absolute;
     top: 8px;
     right: 16px;
-    background-color: grey;
     border-radius: 100px;
     padding: 8px;
 }
 
-.very_bad_rating{background-color: rgb(255,69,69);}
-.bad_rating{background-color: rgb(255,165,52);}
-.normal_rating{background-color: rgb(255,226,52);}
-.good_rating{background-color: rgb(183,221,41);}
-.very_good_rating{background-color: rgb(87,227,44);}
+h1{
+    padding: 10px;
+    margin: 20px;
+    margin-left: 30px;
+}
 
 .movie p{
     margin-top: 30px;
@@ -70,7 +71,7 @@
 
 .movie_description{
     list-style: none;
-	margin: 0 10px;
+	/*margin: 0 10px;*/
 	transform: translateY(40px);
 	transition: 0.5s;
 	opacity: 0;
@@ -104,8 +105,6 @@
     width: 100%;
 }
 
-.head{
-    padding-bottom: 140px;
-}
+
 
 

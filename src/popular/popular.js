@@ -6,9 +6,6 @@ function onDocumentReady(){
 
 }
 
-const img_path = "https://image.tmdb.org/t/p/w500/";
-const filmafinity_path = "https://www.filmaffinity.com/es/search.php?stext=";
-
 function GetPopular(){
     fetch("https://api.themoviedb.org/3/movie/popular?api_key="+api_key).then(function(response) {
         return response.json();
@@ -35,6 +32,11 @@ function PrintMovies(data){
         let newDiv = document.createElement("div");
         //newDiv.classList.add("card");
         newDiv.classList.add("movie");
+        newDiv.addEventListener("click",function(event){
+          //event.preventDefault();
+          localStorage.setItem("Details",value.id);
+          window.location.href = "../movie/movie.html";
+        });
 
         // Get img
         let img = document.createElement("img");
@@ -45,6 +47,7 @@ function PrintMovies(data){
         // Rating
         let rating = document.createElement("p");
         rating.classList.add("rating");
+        
         if(value.vote_average < 4.0){
           rating.classList.add("very_bad_rating");
         }
