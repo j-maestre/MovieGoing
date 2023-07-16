@@ -8,8 +8,9 @@
 
 .movie{
     width: 250px;
-    height: auto;
-    max-height: 477px;
+    /*height: auto;*/
+    min-height: 525px;
+    max-height: 525px;
     /*height: 350px;*/
     padding: 10px;
     border-radius: var(--size-radius);
@@ -51,6 +52,7 @@ h1{
 .movie_description{
     bottom: 50px;
     display: flex;
+    margin-bottom: 15px;
 }
 
 .movie:hover .movie_description{

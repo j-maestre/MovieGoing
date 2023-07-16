@@ -32,7 +32,11 @@ function PrintMovies(data){
         let newDiv = document.createElement("div");
         //newDiv.classList.add("card");
         newDiv.classList.add("movie");
-        newDiv.addEventListener("click",function(event){
+
+
+        let principal_container = document.createElement("div");
+        newDiv.appendChild(principal_container);
+        principal_container.addEventListener("click",function(event){
           //event.preventDefault();
           localStorage.setItem("Details",value.id);
           window.location.href = "../movie/movie.html";
@@ -42,7 +46,7 @@ function PrintMovies(data){
         let img = document.createElement("img");
         img.src = img_path + value.poster_path ;
         img.classList.add("img_poster");
-        newDiv.appendChild(img);
+        principal_container.appendChild(img);
 
         // Rating
         let rating = document.createElement("p");
@@ -67,12 +71,12 @@ function PrintMovies(data){
           rating.classList.add("very_good_rating");
         }
         rating.innerHTML = parseFloat(value.vote_average).toFixed(1);
-        newDiv.appendChild(rating);
+        principal_container.appendChild(rating);
         
         // Title
         let title = document.createElement("p");
         title.innerHTML = value.original_title;
-        newDiv.appendChild(title);
+        principal_container.appendChild(title);
         
         // Description
         let description = document.createElement("a");
