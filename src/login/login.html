@@ -4,6 +4,23 @@
     <title>Login</title>
   <link rel="stylesheet" href="login.css">
   <link rel="stylesheet" href="../index.css">
+  <link rel="apple-touch-icon" sizes="57x57" href="../../data/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../../data/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../../data/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../data/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../../data/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../../data/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../../data/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../../data/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../data/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="../../data/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../data/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../../data/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../data/favicon-16x16.png">
+  <link rel="manifest" href="../../data/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="../../data/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 
@@ -17,11 +34,20 @@
         <div class="card" id="login">
           <h2><svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-coffee" href="#icon-coffee" /></svg>Login</h2>
+          <div class="input_container">
+            <label class="input">
+              <input id="fl_user_name" class="input__field" type="text" placeholder=" " />
+              <span class="input__label">Username</span>
+            </label>
+          </div>
+          
+          <div  class="input_container">
+            <label class="input">
+              <input id="fl_passwd" class="input__field" type="password" placeholder=" " />
+              <span class="input__label">Password</span>
+            </label>
+          </div>
 
-          <label class="input">
-            <input id="fl_user_name" class="input__field" type="text" placeholder="Username" />
-            <input id="fl_passwd" class="input__field" type="password" placeholder="Password" />
-          </label>
           <div class="button-group">
             <button class="btn_submit" id="submit_login">Log in</button>
             <button type="reset">Reset</button>
@@ -35,14 +61,49 @@
         <div class="card" id="singin">
           <h2><svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-coffee" href="#icon-coffee" /></svg>Create account</h2>
-          <label class="input">
-            <input id="fc_user_name" class="input__field" type="text" placeholder="Username" />
-            <input id="fc_name" class="input__field" type="text" placeholder="Name" />
-            <input id="fc_last_name" class="input__field" type="text" placeholder="Last name" />
-            <input id="fc_email" class="input__field" type="email" placeholder="Email" />
-            <input id="fc_passwd" class="input__field" type="password" placeholder="Password" />
-            <input id="fc_passwd2" class="input__field" type="password" placeholder="Repeat password" />
-          </label>
+
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_user_name" class="input__field" type="text" placeholder=" " />
+                <span class="input__label">Username</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_name" class="input__field" type="text" placeholder=" " />
+                <span class="input__label">Name</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_last_name" class="input__field" type="text" placeholder=" " />
+                <span class="input__label">Last name</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_email" class="input__field" type="email" placeholder=" " />
+                <span class="input__label">Email</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_passwd" class="input__field" type="password" placeholder=" " />
+                <span class="input__label">Password</span>
+              </label>
+            </div>
+            
+            <div class="input_container">
+              <label class="input">
+                <input id="fc_passwd2" class="input__field" type="password" placeholder=" " />
+                <span class="input__label">Repeat password</span>
+              </label>
+            </div>
+
           <div class="button-group">
             <button class="btn_submit" id="submit_create">Create</button>
             <button type="reset">Reset</button>

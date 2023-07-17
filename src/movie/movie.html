@@ -3,7 +3,7 @@
 <head>
     <title>Popular films</title>
     <link rel="stylesheet" href="../index.css">
-    <link rel="stylesheet" href="popular.css">
+    <link rel="stylesheet" href="movie.css">
     <link rel="apple-touch-icon" sizes="57x57" href="../../data/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../../data/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="../../data/apple-icon-72x72.png">
@@ -24,29 +24,41 @@
 </head>
 <body>
     <div class="head">
-       
         <ul>
             <li><img class="logomoviegoing" src="../../data/Logomoviegoing.png"></li>
             <li><a href="../home/home.html">Home</a></li>
             <li>Peliculas</li>
             <li>Series</li>
-            <li class="active"><a href="popular.html">Populares</a></li>
+            <li><a href="../popular/popular.html">Populares</a></li>
             <li>Random</li>
             <li>Mi lista</li>
             <li class="perfil">Perfil</li>
         </ul>
-    
-    </div>
-    <div class="ultimaspeliculas">
-
     </div>
 
-    <h1>Most popular movies</h1>
-    
-    <div class="movies_container" id="movies_container"></div>
+    <section class="details_container" id="details_container">
+        <div class="movie" id="movie">
+            <div class="custom_bc">
+                <img src="" class="img_poster" id="movie_poster">
+                <section class="movie_info" id="info">
+                    <h1 id="movie_title">Transformers: Rise of the Beasts (2023)</h1>
+                    <i class="genres" id="movie_genres"></i>
+                    <p class="rating" id="movie_rating"></p>
+                    <section class="description">
+                        <h2>Description</h2>
+                        <article id="movie_description"></article>
+                    </section>
+                    <a class="movie_link" id="movie_filmafinity" target="_blank">Read on filmafinity</a>
+                </section>
+            </div>
+        </div>
+    </section>
 
+    <h2 class="similar_title">Similar Movies</h2>
+    <section class="similar_container" id="similar_container"></section>
+   
 
     <script src="../../data/secrets.js"></script>
-    <script src="popular.js"></script>
+    <script src="movie.js"></script>
 </body>
 </html>

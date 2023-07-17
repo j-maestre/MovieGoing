@@ -47,3 +47,7 @@ body {
         background-position: 0% 50%;
     }
 }
+
+.input_container{
+	margin-bottom: 25px;
+}

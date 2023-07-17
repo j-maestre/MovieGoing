@@ -2,19 +2,12 @@ window.addEventListener('load', onDocumentReady, false);
 
 function onDocumentReady(){
     console.log("Ready");
-
     GetPopular();
 
-
-
-    
 }
 
-const img_path = "https://image.tmdb.org/t/p/w500/";
-
 function GetPopular(){
-
-    fetch("https://api.themoviedb.org/3/movie/popular?api_key=8ecf1bb435e2b5c41e3afb8c8133ac75").then(function(response) {
+    fetch("https://api.themoviedb.org/3/movie/popular?api_key="+api_key).then(function(response) {
         return response.json();
         
       }).then(function(data) {
@@ -37,8 +30,65 @@ function PrintMovies(data){
         console.log(value);
         
         let newDiv = document.createElement("div");
-        newDiv.classList.add("card");
+        //newDiv.classList.add("card");
         newDiv.classList.add("movie");
+
+
+        let principal_container = document.createElement("div");
+        newDiv.appendChild(principal_container);
+        principal_container.addEventListener("click",function(event){
+          //event.preventDefault();
+          localStorage.setItem("Details",value.id);
+          window.location.href = "../movie/movie.html";
+        });
+
+        // Get img
+        let img = document.createElement("img");
+        img.src = img_path + value.poster_path ;
+        img.classList.add("img_poster");
+        principal_container.appendChild(img);
+
+        // Rating
+        let rating = document.createElement("p");
+        rating.classList.add("rating");
+        
+        if(value.vote_average < 4.0){
+          rating.classList.add("very_bad_rating");
+        }
+        if(value.vote_average >= 4.0 && value.vote_average < 5.3){
+          rating.classList.add("bad_rating");
+        }
+        
+        if(value.vote_average >= 5.3 && value.vote_average < 6.5){
+          rating.classList.add("normal_rating");
+        }
+        
+        if(value.vote_average >= 6.5 && value.vote_average < 8.0){
+          rating.classList.add("good_rating");
+        }
+        
+        if(value.vote_average >= 8.0){
+          rating.classList.add("very_good_rating");
+        }
+        rating.innerHTML = parseFloat(value.vote_average).toFixed(1);
+        principal_container.appendChild(rating);
+        
+        // Title
+        let title = document.createElement("p");
+        title.innerHTML = value.original_title;
+        principal_container.appendChild(title);
+        
+        // Description
+        let description = document.createElement("a");
+        //description.innerHTML = value.overview;
+        description.innerHTML = "Read on filmafinity";
+        description.classList.add("movie_description");
+        description.href = filmafinity_path + value.original_title;
+        description.target = "_blank";
+        newDiv.appendChild(description);
+
+
+        container.appendChild(newDiv);
         // img in value.poster_path
     });
 
