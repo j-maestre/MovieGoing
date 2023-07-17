@@ -22,7 +22,7 @@
     
 }
 
-.movie_similar{
+.movie_similar, .company_card{
     width: 250px;
     height: auto;
     max-height: 477px;
@@ -36,8 +36,25 @@
     transition: 0.3s ease-out;
     overflow: hidden;
     position: relative;
-    background-color: var(--color-background);
-    
+    background-color: var(--color-background);   
+}
+
+.company_card{
+    width: 200px;
+}
+
+.company_img{
+    width: 100%;
+    height: auto;
+}
+
+.companies_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
 .img_similar_poster{
@@ -141,6 +158,9 @@
     width: 100%;
 }
 
+.movie_languages{
+    margin-top: 30px;
+}
 
 
 /* Hover Effect */
@@ -203,6 +223,6 @@
     width: 100%;
 }
 
-.similar_title{
+.similar_title, .companies_title{
     margin-left: 20px;
 }

@@ -69,10 +69,44 @@ function PrintMovie(data){
         rating_element.classList.add("very_good_rating");
     }
 
-   document.getElementById("movie_description").innerHTML = data.overview;
+    document.getElementById("movie_description").innerHTML = data.overview;
 
-   let filmafinity = document.getElementById("movie_filmafinity");
-   filmafinity.href = filmafinity_path + data.original_title;
+    let filmafinity = document.getElementById("movie_filmafinity");
+    filmafinity.href = filmafinity_path + data.original_title;
+
+    let lenguajes = document.getElementById("movie_languajes");
+    let names = "";
+    data.spoken_languages.map((val) =>{
+      names += " " + val.english_name + ","
+    });
+
+    names = names.substring(0, names.length - 1) + ".";
+    lenguajes.innerHTML += names;
+
+
+    // Companies names
+    let com_container = document.getElementById("companies_container");
+    data.production_companies.map( (value) =>{
+      let containerDiv = document.createElement("div");
+      containerDiv.classList.add("company_card");
+      com_container.appendChild(containerDiv);
+
+      // Company name
+      let title = document.createElement("p");
+      title.innerHTML = value.name;
+      containerDiv.appendChild(title);
+
+      // Company img
+      let img = document.createElement("img");
+      img.src = img_path + value.logo_path;
+      img.alt = "Company img";
+      img.classList.add("company_img");
+      containerDiv.appendChild(img);
+      
+      
+    });
+
+
 }
 
 function GetSimilar(){
