@@ -19,6 +19,7 @@ function GetPopular(){
 
 }
 
+
 function PrintMovies(data){
 
     console.log(data);
@@ -27,7 +28,6 @@ function PrintMovies(data){
     let container = document.getElementById("movies_container");
 
     data.results.map( (value) =>{
-        console.log(value);
         
         let newDiv = document.createElement("div");
         //newDiv.classList.add("card");
@@ -36,16 +36,17 @@ function PrintMovies(data){
 
         let principal_container = document.createElement("div");
         newDiv.appendChild(principal_container);
-        principal_container.addEventListener("click",function(event){
+        
+        // Get img
+        let img = document.createElement("img");
+        img.src = img_path + value.poster_path ;
+        img.classList.add("img_poster");
+        img.addEventListener("click",function(event){
           //event.preventDefault();
           localStorage.setItem("Details",value.id);
           window.location.href = "../movie/movie.html";
         });
 
-        // Get img
-        let img = document.createElement("img");
-        img.src = img_path + value.poster_path ;
-        img.classList.add("img_poster");
         principal_container.appendChild(img);
 
         // Rating
@@ -72,7 +73,37 @@ function PrintMovies(data){
         }
         rating.innerHTML = parseFloat(value.vote_average).toFixed(1);
         principal_container.appendChild(rating);
-        
+
+        // <div class="heart-like-button"></div>
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        principal_container.appendChild(heart);
+
+
+        heart.addEventListener("click", function(){
+          if(heart.classList.contains("is_animating")){
+            // La borro, y sino la añado
+            heart.classList.remove("is_animating");
+          }else{
+            heart.classList.add("is_animating");
+          }
+        });
+        heart.addEventListener("touchstart", function(){
+          if(heart.classList.contains("is_animating")){
+            // La borro, y sino la añado
+            heart.classList.remove("is_animating");
+          }else{
+            heart.classList.add("is_animating");
+          }
+        });
+
+        // Agregar un EventListener para detectar cuando termina la animación y quitar la clase 'is_animating'
+        heart.addEventListener("animationend", function () {
+          //heart.classList.remove("is_animating");
+          //heart.classList.remove("heart_active");
+        });
+
+
         // Title
         let title = document.createElement("p");
         title.innerHTML = value.original_title;
