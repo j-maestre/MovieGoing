@@ -113,6 +113,7 @@ function PrintMovie(data){
       }).then(function(data) {
         console.log(data.results["ES"]);
         // Hay veces que existe buy, otras que existe flatrate, otras que existe ads y otras que existen todas
+        // Tambien esta "rent" pero me la pela
         let esp = data.results["ES"].buy?data.results["ES"].buy:[];
         PrintProviders(esp);
         esp = data.results["ES"].flatrate?data.results["ES"].flatrate:[];
