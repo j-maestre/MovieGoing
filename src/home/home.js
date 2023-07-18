@@ -67,7 +67,7 @@ function PrintCartelera(data){
         let description = document.createElement("a");
         description.innerHTML = "Read on filmafinity";
         description.classList.add("movie_description");
-        description.href = filmaffinity_path + value.original_title;
+        description.href = filmafinity_path + value.original_title;
         description.target= "_blank";
         newDiv.appendChild(description);
 
