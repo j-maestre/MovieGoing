@@ -68,6 +68,12 @@
 .movie_platforms img:hover{
     transform: scale(1.1);
 }
+
+.movie_description{
+    height: 100px;
+    font-size: small;
+    overflow: auto;
+}
 .company_card{
     width: 200px;
 }
@@ -128,7 +134,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: stretch;
     background-image: linear-gradient(to right, rgba(31.5, 31.5, 31.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 31.5, 31.5, 0.84) 50%, rgba(31.5, 31.5, 31.5, 0.84) 100%);
     margin: 0 !important;    
 }
