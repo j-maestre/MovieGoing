@@ -21,10 +21,16 @@
 	 /*padding: 0 calc(var(--size-bezel) * 3);*/
 }
 
+body, html{
+	
+	margin: 0 !important;
+	padding: 0 !important;
+	height: 100%;
+}
+
 body{
 	width: 100%;
-	height: auto;
-	margin: 0 !important;
+	height: 100%;
 	background-color: var(--backgound-color);
 }
 body *{
@@ -191,3 +197,15 @@ li a{
 .good_rating{background-color: rgb(183,221,41);}
 .very_good_rating{background-color: rgb(87,227,44);}
 
+
+/* Profile */
+.perfil{
+    display: flex;
+}
+
+.perfil img{
+    width: 70px;
+    height: auto;
+    border-radius: 150px;
+    margin-right: 15px;
+}

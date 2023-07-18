@@ -9,7 +9,6 @@ function GetCartelera(){
         return response.json();
         
       }).then(function(data) {
-        console.log(data);
         PrintCartelera(data);
         
       }).catch(function(err) {
@@ -21,7 +20,6 @@ function PrintCartelera(data){
 
     let container = document.getElementById("cartelera_container");
     data.results.map((value) =>{
-        console.log(value);
         
         let newDiv = document.createElement("div");
         newDiv.classList.add("movie");

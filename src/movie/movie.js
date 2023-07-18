@@ -22,6 +22,20 @@ function GetInfo(){
       });
 }
 
+function PrintProviders(providers){
+  providers.map( (v) =>{
+    let container_platform = document.getElementById("movie_platforms");
+    let link = document.createElement("a");
+    link.href = search_path_before + v.provider_name + search_path_after;
+    link.target = "_blank";
+    let p_img = document.createElement("img");
+    p_img.src = img_path + v.logo_path; 
+    link.appendChild(p_img);
+    container_platform.appendChild(link);
+
+  });
+}
+
 function PrintMovie(data){
     let container = document.getElementById("movie");
     container.style.backgroundImage = `url('${img_path+data.backdrop_path}')`;
@@ -97,21 +111,18 @@ function PrintMovie(data){
         return response.json();
         
       }).then(function(data) {
-        console.log(data);
-        let esp = data.results["ES"].buy;
-        console.log(esp);
+        console.log(data.results["ES"]);
+        // Hay veces que existe buy, otras que existe flatrate, otras que existe ads y otras que existen todas
+        let esp = data.results["ES"].buy?data.results["ES"].buy:[];
+        PrintProviders(esp);
+        esp = data.results["ES"].flatrate?data.results["ES"].flatrate:[];
+        PrintProviders(esp);
+        esp = data.results["ES"].ads?data.results["ES"].ads:[];
+        PrintProviders(esp);
+       
+       
 
-        esp.map( (v) =>{
-          let container_platform = document.getElementById("movie_platforms");
-          let link = document.createElement("a");
-          link.href = search_path_before + v.provider_name + search_path_after;
-          link.target = "_blank";
-          let p_img = document.createElement("img");
-          p_img.src = img_path + v.logo_path; 
-          link.appendChild(p_img);
-          container_platform.appendChild(link);
 
-        });
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
       });
