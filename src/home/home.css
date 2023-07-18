@@ -1,4 +1,4 @@
-li{
+.item_menu{
     display: inline;
     padding: 10px;
     float: left;
@@ -7,10 +7,10 @@ li{
     margin: 20px;
 
 }
-li {
+.item_menu {
     position: relative;
 }
-li::before {
+.item_menu::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -23,7 +23,7 @@ li::before {
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
 }
-li:hover::before {
+.item_menu:hover::before {
     transform-origin: left;
     transform: scaleX(1);
 }
