@@ -22,6 +22,22 @@
     
 }
 
+.movie_status{
+    margin-top: 0px;
+    border-radius: 25px;
+    padding: 4px;
+    color: black !important;
+    font-size: small;
+}
+
+.status_released{
+    background-color: greenyellow;
+}
+
+.status_waiting{
+    background-color: tomato;
+}
+
 .movie_similar, .company_card{
     width: 250px;
     height: auto;

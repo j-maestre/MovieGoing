@@ -29,6 +29,16 @@ function PrintMovie(data){
 
     document.getElementById("movie_poster").src = img_path+data.poster_path;
 
+    // Status
+    let status = document.getElementById("status");
+    status.innerHTML = data.status;
+
+    if(data.status == "Released"){
+      status.classList.add("status_released");
+    }else{
+      status.classList.add("status_waiting");
+    }
+
     // Cogemos todos los generos
     document.getElementById("movie_title").innerHTML = data.title + " (" + data.release_date.substring(0,4) + ")";
     let genres_element = document.getElementById("movie_genres");
