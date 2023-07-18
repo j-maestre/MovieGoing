@@ -13,6 +13,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    align-items: stretch;
 }
 
 .img_poster{
@@ -55,6 +56,17 @@
     background-color: var(--color-background);   
 }
 
+.movie_platforms img{
+    width: 9.5%;
+    height: auto;
+    margin: 10px 10px 0px 0px;
+    border-radius: 15px;
+    transition: all 0.2s;
+}
+
+.movie_platforms img:hover{
+    transform: scale(1.1);
+}
 .company_card{
     width: 200px;
 }

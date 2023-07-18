@@ -1,10 +1,10 @@
 window.addEventListener('load', onDocumentReady, false);
 
 function onDocumentReady(){
-    console.log("Ready");
     GetInfo();
 
 }
+
 
 function GetInfo(){
 
@@ -15,7 +15,6 @@ function GetInfo(){
         return response.json();
         
       }).then(function(data) {
-        console.log(data);
         PrintMovie(data);
         GetSimilar();
       }).catch(function(err) {
@@ -57,7 +56,6 @@ function PrintMovie(data){
     // Rating
     let rating_element = document.getElementById("movie_rating");
     rating_element.innerHTML = parseFloat(data.vote_average).toFixed(1);
-    console.log(data.vote_average);
 
     if(data.vote_average < 4.0){
         rating_element.classList.add("very_bad_rating");
@@ -84,6 +82,7 @@ function PrintMovie(data){
     let filmafinity = document.getElementById("movie_filmafinity");
     filmafinity.href = filmafinity_path + data.original_title;
 
+    // Translation
     let lenguajes = document.getElementById("movie_languajes");
     let names = "";
     data.spoken_languages.map((val) =>{
@@ -92,6 +91,30 @@ function PrintMovie(data){
 
     names = names.substring(0, names.length - 1) + ".";
     lenguajes.innerHTML += names;
+
+    // Platforms
+    fetch("https://api.themoviedb.org/3/movie/"+localStorage.getItem("Details")+"/watch/providers?api_key="+api_key).then(function(response) {
+        return response.json();
+        
+      }).then(function(data) {
+        console.log(data);
+        let esp = data.results["ES"].buy;
+        console.log(esp);
+
+        esp.map( (v) =>{
+          let container_platform = document.getElementById("movie_platforms");
+          let link = document.createElement("a");
+          link.href = search_path_before + v.provider_name + search_path_after;
+          link.target = "_blank";
+          let p_img = document.createElement("img");
+          p_img.src = img_path + v.logo_path; 
+          link.appendChild(p_img);
+          container_platform.appendChild(link);
+
+        });
+      }).catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
 
 
     // Companies names
@@ -112,8 +135,6 @@ function PrintMovie(data){
       img.alt = "Company img";
       img.classList.add("company_img");
       containerDiv.appendChild(img);
-      
-      
     });
 
 
@@ -126,7 +147,6 @@ function GetSimilar(){
         return response.json();
         
       }).then(function(data) {
-        console.log(data);
         PrintSimilar(data);
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
@@ -137,7 +157,6 @@ function PrintSimilar(data){
     let container = document.getElementById("similar_container");
 
     data.results.map( (value) =>{
-        console.log(value);
         
         let newDiv = document.createElement("div");
         //newDiv.classList.add("card");
