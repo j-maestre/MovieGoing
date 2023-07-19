@@ -42,7 +42,7 @@
 .movie_similar, .company_card{
     width: 250px;
     height: auto;
-    max-height: 477px;
+    max-height: 730px;
     /*height: 350px;*/
     padding: 10px;
     border-radius: var(--size-radius);
@@ -58,6 +58,7 @@
 
 .movie_platforms img{
     width: 7%;
+    min-width: 70px;
     max-width: 140px;
     height: auto;
     margin: 10px 10px 0px 0px;
@@ -109,8 +110,8 @@
 
 .movie{
     width: 80%;
-    min-height: 500px;
-    max-height: 577px;
+    /*min-height: 500px;*/
+    max-height: 750px;
     /*height: 350px;*/
     /*padding: 10px;*/
     /*margin-right: 10%;*/
