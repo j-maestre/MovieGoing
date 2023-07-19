@@ -36,3 +36,43 @@ function GetUser(){
 
 }
 
+function AddToList(id){
+    console.log("pa dentro "+ id);
+    let list = []; 
+    list = JSON.parse(localStorage.getItem("List"));
+    console.log(list);
+
+    // TODO
+    // Antes de meterlo, llamamos a la funcion isInList para comprobar si esta, si no esta lo metemos, pero si ya esta lo que tenemos que hacer es quitarlo
+
+    // Guardar el id de la film
+    if(list != null){
+        // Añadimos nuevo id al final
+        list.push(id);
+    }else{
+        // Es la primera vez que guardamos algo
+        list = [];
+        list[0] = id;
+    }    
+    
+    localStorage.setItem("List", JSON.stringify(list));
+    // JSON.parse(localStorage.getItem(localStorage.key(i)))
+
+}
+
+// TODO
+function isInList(id){
+
+    // Comprobar si el id esta en la lista de guardados
+    let list = [];
+    list = JSON.parse(localStorage.getItem("List"));
+    // Recorrer todos los elementos buscando el id
+
+
+
+    // return true si esta en la lista, false si no esta
+
+    
+
+}
+
