@@ -74,3 +74,4 @@ function PrintCartelera(data){
 
     })
 }
+
