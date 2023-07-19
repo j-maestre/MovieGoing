@@ -1,0 +1,114 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+ * {
+	 box-sizing: border-box;
+}
+ html, body {
+	 height: 100%;
+	 width: 100%;
+	 overflow: hidden;
+}
+ body {
+	 background-color: #000;
+	 font-family: 'industry';
+}
+ .slideShow {
+	 height: 100%;
+	 width: 75%;
+	 min-width: 750px;
+	 margin: 0 auto;
+	 overflow: visible;
+}
+ .slideShow__container {
+	 height: 100%;
+	 width: 100%;
+	 list-style: none;
+	 display: block;
+	 margin: 0;
+	 padding: 0;
+	 white-space: nowrap;
+	 font-size: 0;
+	 line-height: 0;
+	 position: relative;
+}
+ .slideShow__slide {
+	 height: 100%;
+	 width: 100%;
+	 display: inline-block;
+	 position: relative;
+}
+ .slideShow__image {
+	 display: block;
+	 margin: 0;
+	 padding: 0;
+	 height: 100%;
+	 width: 100%;
+	 background-size: cover;
+	 background-position: center;
+	 position: relative;
+	 transform: scale(0.8);
+}
+ .slideShow__image::after {
+	 content: '';
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 background-image: linear-gradient(225deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+ .slideShow__titleWrap {
+	 font-size: 1rem;
+	 position: absolute;
+	 left: 4rem;
+	 bottom: 4rem;
+	 padding-bottom: 2rem;
+	 padding-left: 2rem;
+	 color: #fff;
+}
+ .slideShow__slideTitle {
+	 font-weight: 300;
+	 z-index: 500;
+	 color: #fff;
+	 font-size: 5em;
+	 text-transform: uppercase;
+	 letter-spacing: 2px;
+	 line-height: 1;
+	 margin: 0 0 0.5rem;
+	 opacity: 0;
+}
+ .slideShow__slideSubTitle {
+	 font-size: 1.5em;
+	 text-transform: uppercase;
+	 font-family: sans-serif;
+	 padding-left: 0.5rem;
+	 font-weight: 300;
+	 letter-spacing: 1px;
+	 opacity: 0;
+}
+ .slideShow__next, .slideShow__prev {
+	 position: absolute;
+	 top: 50%;
+	 transform: translateY(-50%);
+	 font-size: 5em;
+	 line-height: 1em;
+	 color: #fff;
+}
+ .slideShow__next i, .slideShow__prev i {
+	 display: block;
+	 float: left;
+}
+ .slideShow__next {
+	 right: 1rem;
+	 cursor: pointer;
+}
+ .slideShow__prev {
+	 left: 1rem;
+	 cursor: pointer;
+	 transition: opacity 0.3s ease;
+	 transform-origin: center;
+}
+ .slideShow__prev.is-inactive {
+	 opacity: 0.3;
+	 cursor: default;
+}
+ 
