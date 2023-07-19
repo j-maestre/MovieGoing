@@ -27,10 +27,32 @@
 
 .rating{
     position: absolute;
-    top: 8px;
     right: 16px;
     border-radius: 100px;
     padding: 8px;
+}
+
+.rating{
+    top: 8px;
+}
+
+.list_button{
+    position: absolute;
+    right: 16px;
+    top: 495px;
+    right: 10px;
+    transition: all 0.3s;
+}
+
+.list_button:hover{
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 33px 1px rgba(250,183,0,1);
+    -moz-box-shadow: 0px 0px 33px 1px rgba(250,183,0,1);
+    box-shadow: 0px 0px 33px 1px rgba(250,183,0,1);
+}
+.list_icon{
+    font-size: 40px;
+    background-color: transparent;
 }
 
 h1{
@@ -47,7 +69,10 @@ h1{
     max-width: 100%;
     max-height: 100%;
     transition: 0.3s ease-out;
+}
 
+.img_poster:hover{
+    cursor: pointer;
 }
 
 .movie_description{
@@ -59,10 +84,10 @@ h1{
 .movie:hover .movie_description{
     transform: translateY(0px);
 	opacity: 1;
-    cursor: pointer;
+   /*cursor: pointer;*/
 }
 .movie:hover{
-    cursor: pointer;
+    /*cursor: pointer;*/
     /*box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);*/
     box-shadow: 0.5rem 0.5rem 10px var(--color-shadow, currentColor);
 }
@@ -108,65 +133,18 @@ h1{
     width: 100%;
 }
 
+/*
+.movie_principal_container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+*/
 
 /* Heart Button */
 
-.bookmark {
-    --color: #1e2235;
-    --back: #eceffc;
-    --default-position: 32px;
-    --default-y: 0px;
-    --background-height: 17px;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-appearance: none;
-    outline: none;
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 5px 0 0 0;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-.bookmark:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 9px;
-    width: 18px;
-    height: 19px;
-    border-radius: 1px;
-    clip-path: inset(0 -1px var(--background-height) -1px);
-    background: var(--color);
-    transform: translateZ(0);
-}
-.bookmark svg {
-    display: block;
-    width: 36px;
-    height: 36px;
-    margin-top: -5px;
-    stroke: var(--color);
-    stroke-width: 2px;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-    position: relative;
-    z-index: 1;
-    transform: translateZ(0);
-}
-.bookmark svg path {
-    fill: var(--fill, var(--back));
-    transform: translateZ(0);
-}
-.bookmark svg path.default {
-    --fill: var(--default-fill, var(--back));
-    clip-path: circle(var(--default-position) at 50% 100%);
-}
-.bookmark svg path.filled {
-    --fill: var(--color);
-}
-.bookmark svg path.default, .bookmark svg path.filled {
-    transform: translateY(var(--default-y)) translateZ(0);
-}
+
 
 /* End Heart Button */
 
