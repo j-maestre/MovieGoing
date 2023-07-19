@@ -167,7 +167,7 @@ li::before {
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
 }
-li:hover::before, .active::before {
+.item_menu:hover::before, .active::before {
     transform-origin: left;
     transform: scaleX(1);
 }
