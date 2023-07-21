@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MovieGoing
-    </title>
-    <link rel="stylesheet" href="home.css">
+    <title>Popular films</title>
     <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="list.css">
     <link rel="apple-touch-icon" sizes="57x57" href="../../data/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../../data/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="../../data/apple-icon-72x72.png">
@@ -18,37 +17,35 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../../data/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="../../data/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../data/favicon-16x16.png">
-    <link rel="manifest" href="../../data/manifest.json">
+    <!-- <link rel="manifest" href="../../data/manifest.json"> -->
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="../../data/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-    
-    <div class ="head">
-            <li><img class="logomoviegoing" src="../../data/Logomoviegoing.png" /></li>
-            <li class ="active item_menu" >Home</li>
-            <li class="item_menu">Movies</li>
+    <div class="head">
+       
+        <ul>
+            <li><img class="logomoviegoing" src="../../data/Logomoviegoing.png"></li>
+            <li class="item_menu"><a href="../home/home.html">Home</a></li>
+            <li class="item_menu">Peliculas</li>
             <li class="item_menu">Series</li>
-            <li class="item_menu"><a href="../popular/popular.html">Popular</a></li>
+            <li class="item_menu"><a href="../popular/popular.html">Populares</a></li>
             <li class="item_menu">Random</li>
-            <li class="item_menu"><a href="../list/list.html">My list</a></li>
+            <li class="active item_menu"><a href="../list/list.html">My list</a></li>
             <li class="perfil" id="profile_container"></li>
         </ul>
     
     </div>
-    
-    <h1 class="last_movies_title">Last Movies</h1>
+
+
+    <h1>My list</h1>
     <div class="movies_container" id="movies_container"></div>
-    <div class="random_container">
-        <button class="randombutton">Random Movie</button>
-    </div>
+
+
     <script src="../../data/secrets.js"></script>
     <script src="https://kit.fontawesome.com/a1d3af8fdb.js" crossorigin="anonymous"></script>
+    <script src="list.js"></script>
     <script src="../index.js"></script>
-    <script src="home.js"></script>
-    
-    
 </body>
-
 </html>
