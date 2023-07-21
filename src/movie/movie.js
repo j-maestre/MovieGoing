@@ -52,8 +52,43 @@ function PrintMovieDetails(data){
       status.classList.add("status_waiting");
     }
 
-    // Cogemos todos los generos
     document.getElementById("movie_title").innerHTML = data.title + " (" + data.release_date.substring(0,4) + ")";
+    
+    // Guardar en mi lista
+    //let icon = document.getElementById("details_list_bookmark");
+    let icon = document.createElement("i");
+    icon.classList.add("fa-bookmark");
+    icon.classList.add("list_icon");
+    icon.classList.add("list_button_details");
+    
+    // TODO
+    let isSaved = isInList(data.id);
+
+    // Añadimos esta clase si esta guardada en la lista
+    if(isSaved){
+      icon.classList.add("fa-solid");          
+    }else{
+      icon.classList.add("fa-regular");
+    }
+
+    icon.addEventListener("click", function(){
+      AddToList(data.id);
+      
+      // TODO Redundancia, pediente de optimizacion
+      if(isInList(data.id)){
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+      }else{
+        icon.classList.remove("fa-solid");
+        icon.classList.add("fa-regular");
+      }
+    });
+    document.getElementById("movie_title").appendChild(icon);
+
+
+
+
+    // Cogemos todos los generos
     let genres_element = document.getElementById("movie_genres");
     let genres_text = "";
 

@@ -108,7 +108,7 @@ function isInList(id){
 
 }
 
-
+// Function to print movie card in a container
 function PrintMovie(value, container_id = "movies_container"){
 
     console.log(value);

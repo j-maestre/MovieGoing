@@ -262,3 +262,15 @@
 .similar_title, .companies_title{
     margin-left: 20px;
 }
+
+
+.list_button_details{
+    margin-left: 15px;
+}
+
+.list_button_details:hover{
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 33px 1px rgba(250,183,0,1);
+    -moz-box-shadow: 0px 0px 33px 1px rgba(250,183,0,1);
+    box-shadow: 0px 0px 33px 1px rgba(250,183,0,1);
+}
