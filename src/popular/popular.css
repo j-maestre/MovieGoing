@@ -53,6 +53,7 @@
 .list_icon{
     font-size: 32px;
     background-color: transparent;
+    transition: all 0.2s;
 }
 
 h1{

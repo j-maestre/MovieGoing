@@ -38,41 +38,73 @@ function GetUser(){
 
 function AddToList(id){
     console.log("pa dentro "+ id);
+
+    // Comprobar primero si esta logueado
+    let logued = localStorage.getItem("islogged");
+    if(logued == "false"){
+        window.location.href = "../login/login.html";
+    }
+
+
     let list = []; 
     list = JSON.parse(localStorage.getItem("List"));
     console.log(list);
 
-    // TODO
-    // Antes de meterlo, llamamos a la funcion isInList para comprobar si esta, si no esta lo metemos, pero si ya esta lo que tenemos que hacer es quitarlo
-
-    // Guardar el id de la film
-    if(list != null){
-        // Añadimos nuevo id al final
-        list.push(id);
+    // Si no esta en la lista lo añadimos
+    if(!isInList(id)){
+        console.log("No esta en la lista");
+        // Guardar el id de la film
+        if(list != null){
+            // Añadimos nuevo id al final
+            list.push(id);
+        }else{
+            // Es la primera vez que guardamos algo
+            list = [];
+            list[0] = id;
+        }    
     }else{
-        // Es la primera vez que guardamos algo
-        list = [];
-        list[0] = id;
-    }    
+        // Ya esta en la lista, lo quitamos
+
+        // Creamos un array auxiliar
+        let listAux = [];
+
+        list.map( (num) =>{
+            // Si el id es diferente del que queremos eliminar, añadimos ese id al nuevo array
+            if(num != id){
+                listAux.push(num);
+            }
+        })
+
+
+        // Ahora la nueva lista tiene todos los demas ids excepto el que queriamos eliminar
+        list = listAux;
+    }
     
     localStorage.setItem("List", JSON.stringify(list));
     // JSON.parse(localStorage.getItem(localStorage.key(i)))
 
 }
 
-// TODO
 function isInList(id){
 
     // Comprobar si el id esta en la lista de guardados
     let list = [];
     list = JSON.parse(localStorage.getItem("List"));
-    // Recorrer todos los elementos buscando el id
 
-
-
-    // return true si esta en la lista, false si no esta
-
+    let isInList = false;
     
+    // Recorremos todos los ids
+    if(list != null){
+        list.map( (value) =>{
+            // Si el id coincide con el que estamos buscando, ponemos isInList a true
+            if(value === id){
+                isInList = true;
+            }
+        });
+    }
+
+    // Devolvemos el resultado de la busqueda
+    return isInList;
 
 }
 

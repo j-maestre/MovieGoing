@@ -87,14 +87,23 @@ function PrintMovies(data){
         let isSaved = isInList(value.id);
 
         // Añadimos esta clase si esta guardada en la lista
-        //if(isSaved){
-          //icon.classList.add("fa-solid");          
-        //}else{
+        if(isSaved){
+          icon.classList.add("fa-solid");          
+        }else{
           icon.classList.add("fa-regular");
-        //}
+        }
 
         icon.addEventListener("click", function(){
           AddToList(value.id);
+          
+          // TODO Redundancia, pediente de optimizacion
+          if(isInList(value.id)){
+            icon.classList.remove("fa-regular");
+            icon.classList.add("fa-solid");
+          }else{
+            icon.classList.remove("fa-solid");
+            icon.classList.add("fa-regular");
+          }
         });
         principal_container.appendChild(icon);
 
