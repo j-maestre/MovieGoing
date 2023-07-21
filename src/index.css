@@ -9,7 +9,7 @@
 	 --color-background: var(--color-light);
 	 --color-text: var(--color-dark);
 	 --color-accent: var(--color-signal);
-	 --backgound-color: #d7d7d7;
+	 --background-color: #d7d7d7;
 	 --size-bezel: 0.5rem;
 	 --size-radius: 4px;
 	 line-height: 1.4;
@@ -25,14 +25,17 @@ body, html{
 	
 	margin: 0 !important;
 	padding: 0 !important;
-	height: 100%;
+	/*height: 100%;*/
 }
 
 body{
-	width: 100%;
-	height: 100%;
+	/*width: 100%;
+	height: 100%;*/
+    width: auto;
+    height: auto;
+
 	z-index: -5;
-	background-color: var(--backgound-color);
+	background-color: var(--background-color);
 }
 body *{
 	
