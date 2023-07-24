@@ -62,7 +62,7 @@ function PrintMovieDetails(data){
     icon.classList.add("list_button_details");
     
     // TODO
-    if(localStorage.getItem("isLogged") == "true"){
+    if(localStorage.getItem("islogged") == "true"){
 
       let isSaved = isInList(data.id);
       

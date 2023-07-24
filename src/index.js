@@ -190,8 +190,7 @@ function PrintMovie(value, container_id = "movies_container"){
     icon.classList.add("list_icon");
     icon.classList.add("list_button");
 
-    
-    if(localStorage.getItem("isLogged") == "true"){
+    if(localStorage.getItem("islogged") == "true"){
 
       let isSaved = isInList(value.id);
       // Añadimos esta clase si esta guardada en la lista
