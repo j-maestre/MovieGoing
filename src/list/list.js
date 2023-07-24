@@ -7,7 +7,7 @@ function onDocumentReady(){
 }
 
 function GetMylistMovies(){
-  let list = JSON.parse(localStorage.getItem("List"));
+  let list = JSON.parse(localStorage.getItem("UserLogged")).List;
   list.map( (id) =>{
     fetch("https://api.themoviedb.org/3/movie/"+id+"?api_key="+api_key).then(function(response) {
       return response.json();

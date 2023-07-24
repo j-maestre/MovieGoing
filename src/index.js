@@ -47,7 +47,7 @@ function AddToList(id){
 
 
     let list = []; 
-    list = JSON.parse(localStorage.getItem("List"));
+    list = JSON.parse(localStorage.getItem("UserLogged")).List;
     console.log(list);
 
     // Si no esta en la lista lo añadimos
@@ -80,16 +80,38 @@ function AddToList(id){
         list = listAux;
     }
     
-    localStorage.setItem("List", JSON.stringify(list));
+    //localStorage.setItem("List", JSON.stringify(list));
     // JSON.parse(localStorage.getItem(localStorage.key(i)))
+    UpdateList(list);
 
+}
+
+// Function to update list of the logued user
+function UpdateList(newList){
+  // Primero cogemos el usuario de la lista de usuarios por su index
+  let users = JSON.parse(localStorage.getItem("UsersRegistered"));
+  let userLogued = JSON.parse(localStorage.getItem("UserLogged"));
+  let index = -1;
+  users.map( (value, i) =>{
+    if(value.Username == userLogued.Username){
+      // Guardamos el index del usuario
+      index = i;
+    }
+  });
+
+  if(index != -1){
+    // Actualizamos la lista de peliculas del usuario y sobreescribimos los usuarios con sus datos
+    users[index].List = newList;
+    localStorage.setItem("UsersRegistered",JSON.stringify(users));
+    localStorage.setItem("UserLogged",JSON.stringify(users[index]));
+  }
 }
 
 function isInList(id){
 
     // Comprobar si el id esta en la lista de guardados
     let list = [];
-    list = JSON.parse(localStorage.getItem("List"));
+    list = JSON.parse(localStorage.getItem("UserLogged")).List;
 
     let isInList = false;
     
