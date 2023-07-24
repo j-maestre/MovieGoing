@@ -43,9 +43,14 @@ function LogIn(){
             if(CheckPasswd(username, passwd)){
                 alert("Login correcto");
                 localStorage.setItem("islogged", true);
-                localStorage.setItem("UserLogged", localStorage.getItem(username));
-                // Go to home
-                window.location.href = "../home/home.html";
+                let user = GetUser(username);
+                if(user){
+                    localStorage.setItem("UserLogged", JSON.stringify(user));
+                    // Go to home
+                    window.location.href = "../home/home.html";
+                }else{
+                    alert("Unexpected error");
+                }
 
             }else{
                 alert("Usuario o contraseña incorrectos");
@@ -58,7 +63,18 @@ function LogIn(){
 
 // Check si la contraseña y el usuario el correcto
 function CheckPasswd(name, passwd){
-    for(let i = 0; i < localStorage.length; i++){
+    let users = JSON.parse(localStorage.getItem("UsersRegistered"));
+    let isCorrect = false;
+
+    users.map( (value)=>{
+        
+        if(value.Username == name && value.Password == passwd){
+            isCorrect = true;
+        }
+    });
+
+
+    /*for(let i = 0; i < localStorage.length; i++){
         if(localStorage.key(i) == name){
             let user = JSON.parse(localStorage.getItem(localStorage.key(i)));
             console.log(user);
@@ -67,21 +83,48 @@ function CheckPasswd(name, passwd){
             }
 
         }
-    }
+    }*/
 
-    return false;
+    return isCorrect;
 }
 
-function CheckUser(name, passwd = false){
+// Returns the user object if exist, false otherwise
+function GetUser(username){
+    let users = JSON.parse(localStorage.getItem("UsersRegistered"));
+    let user = false;
 
-    for ( let i = 0; i < localStorage.length; i++){
+    users.map( (value)=>{
+        console.log(value);
+        console.log(value.Username == username)
+        if(value.Username == username){
+            user = value;
+        }
+    });
+
+    console.log("USer antes de return: "+ user);
+    return user;
+}
+// Returns true if the username does not exist, false otherwise
+function CheckUser(name){
+
+    let users = JSON.parse(localStorage.getItem("UsersRegistered"));
+
+    let isNew = true;
+    users.map( (value)=>{
+        if(value.username == name){
+            isNew = false;
+            //return false;
+        }
+    });
+
+    /*for ( let i = 0; i < localStorage.length; i++){
         if(localStorage.key(i) == name){
             // El usuario ya existe
             return false;
         }
-    }
+    }*/
 
-    return true;
+    return isNew;
 }
 
 function SingIn(){
@@ -129,7 +172,20 @@ function SingIn(){
             console.log(user);
 
             if(CheckUser(username)){
-                localStorage.setItem(username, JSON.stringify(user));
+                // Recogemos los usuarios actuales
+                let users = JSON.parse(localStorage.getItem("UsersRegistered"));
+                //localStorage.setItem(username, JSON.stringify(user));
+
+                if(users == null){
+                    // Es el primer usuario que se registra
+                    users = [];
+                }
+
+                // Metemos el nuevo usuario en la lista
+                users.push(user);
+                // Guardamos de nuevo los usuarios con el nuevo añadido
+                localStorage.setItem("UsersRegistered",JSON.stringify(users));
+
                 alert("usuario creado");
             }else{
                 alert("El nombre de usuario ya existe");
