@@ -189,13 +189,17 @@ function PrintMovie(value, container_id = "movies_container"){
     icon.classList.add("fa-bookmark");
     icon.classList.add("list_icon");
     icon.classList.add("list_button");
-    
-    // TODO
-    let isSaved = isInList(value.id);
 
-    // Añadimos esta clase si esta guardada en la lista
-    if(isSaved){
-      icon.classList.add("fa-solid");          
+    
+    if(localStorage.getItem("isLogged") == "true"){
+
+      let isSaved = isInList(value.id);
+      // Añadimos esta clase si esta guardada en la lista
+      if(isSaved){
+        icon.classList.add("fa-solid");          
+      }else{
+        icon.classList.add("fa-regular");
+      }
     }else{
       icon.classList.add("fa-regular");
     }

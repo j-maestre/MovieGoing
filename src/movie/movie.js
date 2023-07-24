@@ -62,11 +62,16 @@ function PrintMovieDetails(data){
     icon.classList.add("list_button_details");
     
     // TODO
-    let isSaved = isInList(data.id);
+    if(localStorage.getItem("isLogged") == "true"){
 
-    // Añadimos esta clase si esta guardada en la lista
-    if(isSaved){
-      icon.classList.add("fa-solid");          
+      let isSaved = isInList(data.id);
+      
+      // Añadimos esta clase si esta guardada en la lista
+      if(isSaved){
+        icon.classList.add("fa-solid");          
+      }else{
+        icon.classList.add("fa-regular");
+      }
     }else{
       icon.classList.add("fa-regular");
     }
@@ -84,8 +89,6 @@ function PrintMovieDetails(data){
       }
     });
     document.getElementById("movie_title").appendChild(icon);
-
-
 
 
     // Cogemos todos los generos
@@ -155,9 +158,6 @@ function PrintMovieDetails(data){
         PrintProviders(esp);
         esp = data.results["ES"].ads?data.results["ES"].ads:[];
         PrintProviders(esp);
-       
-       
-
 
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
