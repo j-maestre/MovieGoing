@@ -66,9 +66,10 @@ function CheckPasswd(name, passwd){
     let users = JSON.parse(localStorage.getItem("UsersRegistered"));
     let isCorrect = false;
 
+    let encriptedPasswd = CryptoJS.MD5(passwd).toString();
     users.map( (value)=>{
         
-        if(value.Username == name && value.Password == passwd){
+        if(value.Username == name && value.Password == encriptedPasswd){
             isCorrect = true;
         }
     });
@@ -108,14 +109,17 @@ function GetUser(username){
 function CheckUser(name){
 
     let users = JSON.parse(localStorage.getItem("UsersRegistered"));
-
     let isNew = true;
-    users.map( (value)=>{
-        if(value.username == name){
-            isNew = false;
-            //return false;
-        }
-    });
+
+    // Si es null significa que aun no hay usuarios
+    if(users != null){
+        users.map( (value)=>{
+            if(value.username == name){
+                isNew = false;
+                //return false;
+            }
+        });
+    }
 
     /*for ( let i = 0; i < localStorage.length; i++){
         if(localStorage.key(i) == name){
@@ -166,7 +170,8 @@ function SingIn(){
                 "Name": name,
                 "LastName": last_name,
                 "Email": email,
-                "Password": passwd,
+                "Password": CryptoJS.MD5(passwd).toString(),
+                "List": null,
             }
 
             console.log(user);
