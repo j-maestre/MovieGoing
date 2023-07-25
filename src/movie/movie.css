@@ -56,6 +56,14 @@
     background-color: var(--color-background);   
 }
 
+.movie_platforms{
+    /*display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;*/
+}
+
 .movie_platforms img{
     width: 7%;
     min-width: 70px;
@@ -87,7 +95,7 @@
 .companies_container{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-content: center;
     justify-content: flex-start;
     align-items: stretch;
