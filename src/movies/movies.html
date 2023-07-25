@@ -3,7 +3,7 @@
 <head>
     <title>MovieGoing
     </title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="movies.css">
     <link rel="stylesheet" href="../index.css">
     <link rel="apple-touch-icon" sizes="57x57" href="../../data/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../../data/apple-icon-60x60.png">
@@ -27,8 +27,8 @@
     
     <div class ="head">
             <li><img class="logomoviegoing" src="../../data/Logomoviegoing.png" /></li>
-            <li class ="active item_menu" >Home</li>
-            <li class="item_menu"><a href="../movies/movies.html" >Movies</a></li>
+            <li class="item_menu"><a href="../home/home.html">Home</a></li>
+            <li class="active item_menu">Movies</li>
             <li class="item_menu">Series</li>
             <li class="item_menu"><a href="../popular/popular.html">Popular</a></li>
             <li class="item_menu"><a href="../random/random.html">Random</a></li>
@@ -38,15 +38,22 @@
     
     </div>
     
-    <h1 class="last_movies_title">Last Movies</h1>
-    <div class="movies_container" id="movies_container"></div>
-    <div class="random_container">
-        <button class="randombutton">Random Movie</button>
-    </div>
+    <h1 class="last_movies_title">All Movies</h1>
+    <section class="all_movies_container" id="all_movies_container">
+        <div class="filters" id="filters_container">
+            <p>Genre</p>
+            <ul>
+                <li><input type="checkbox">Action</li>
+                <li><input type="checkbox">Drama</li>
+                <li><input type="checkbox">Suspense</li>
+            </ul>
+        </div>
+        <div class="movies_container" id="movies_container"></div>
+    </section>
     <script src="../../data/secrets.js"></script>
     <script src="https://kit.fontawesome.com/a1d3af8fdb.js" crossorigin="anonymous"></script>
     <script src="../index.js"></script>
-    <script src="home.js"></script>
+    <script src="movies.js"></script>
     
     
 </body>
