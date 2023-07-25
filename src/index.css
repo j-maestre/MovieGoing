@@ -33,7 +33,7 @@ body{
 	height: 100%;*/
     width: auto;
     height: auto;
-
+    position: absolute;
 	z-index: -5;
 	background-color: var(--background-color);
 }
