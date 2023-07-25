@@ -25,8 +25,6 @@ function PrintMovies(data){
     console.log(data);
     console.log(data.results[0]);
 
-    let container = document.getElementById("movies_container");
-
     data.results.map( (value) =>{
         
       PrintMovie(value)

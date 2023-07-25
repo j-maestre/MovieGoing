@@ -142,9 +142,9 @@ function SingIn(){
     document.getElementById("submit_create").addEventListener("click", function(){
         let error = false;
         let username = document.getElementById('fc_user_name').value;
-        let name = document.getElementById('fc_user_name').value;
-        let last_name = document.getElementById('fc_user_name').value;
-        let email = document.getElementById('fc_user_name').value;
+        let name = document.getElementById('fc_name').value;
+        let last_name = document.getElementById('fc_last_name').value;
+        let email = document.getElementById('fc_email').value;
         let passwd = document.getElementById('fc_passwd').value;
         let passwd2 = document.getElementById('fc_passwd2').value;
 
