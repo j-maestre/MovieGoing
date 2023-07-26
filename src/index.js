@@ -133,7 +133,7 @@ function isInList(id){
 // Function to print movie card in a container
 function PrintMovie(value, container_id = "movies_container"){
 
-    console.log(value);
+    //console.log(value);
     let container = document.getElementById(container_id);
   
     let newDiv = document.createElement("div");

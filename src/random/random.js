@@ -3,6 +3,9 @@ window.addEventListener('load',onDocumentReady,false);
 function onDocumentReady(){
     console.log('Ready');
     GetTotalMovies();
+    document.getElementById("random_movie").addEventListener("click", function(){
+      GetTotalMovies();
+    });
 }
 function GetTotalMovies(){
     fetch("https://api.themoviedb.org/3/discover/movie?api_key="+api_key).then(function(response) {

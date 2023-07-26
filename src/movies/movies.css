@@ -232,4 +232,15 @@ h1{
     align-content: flex-start;
     align-items: flex-start;
     padding-right: 10px;
+    margin-left: 20px;
+}
+
+.filters_item{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    /*overflow: hidden;*/
 }
