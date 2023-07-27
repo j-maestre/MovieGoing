@@ -41,7 +41,7 @@ function AddToList(id){
 
     // Comprobar primero si esta logueado
     let logued = localStorage.getItem("islogged");
-    if(logued == "false"){
+    if(!logued || logued == "false"){
         window.location.href = "../login/login.html";
     }
 
