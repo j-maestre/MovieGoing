@@ -34,8 +34,10 @@ function PrintCartelera(data){
     })
 }
 
+let genres_selected = [];
+let rating = -1.0;
+
 function PrepareFilters(){
-  let genres_selected = [];
   const allInputs = document.getElementsByTagName('input');
   const checkboxes = Array.from(allInputs).filter(input => input.type === 'checkbox');
   checkboxes.map( (element) =>{
@@ -50,7 +52,7 @@ function PrepareFilters(){
         // Checkbox desmarcado
 
       }
-      GetMoviesByFilters(genres_selected);
+      GetMoviesByFilters(genres_selected, rating);
     })
 
     
@@ -58,17 +60,22 @@ function PrepareFilters(){
 }
 
 
-function GetMoviesByFilters(filters){
-  console.log("Filters ", filters);
+function GetMoviesByFilters(genres_selected = null, rating = -1.0){
+  console.log("Filters ", genres_selected);
+  console.log("Filters ", rating);
   let query = "";
-  filters.map( (value) =>{
-    query += genres[value] + ",";
-  })
+  if(genres_selected){
+
+    genres_selected.map( (value) =>{
+      query += genres[value] + ",";
+    })
+  }
 
   // Eliminamos el ultimo elemento de la query, que es una ","
   query = query.slice(0,-1);
 
-  fetch("https://api.themoviedb.org/3/discover/movie?api_key="+api_key+"&with_genres="+query).then(function(response) {
+
+  fetch("https://api.themoviedb.org/3/discover/movie?api_key="+api_key+"&with_genres="+query+"&vote_average.gte="+rating).then(function(response) {
         return response.json();
         
       }).then(function(data) {
@@ -83,9 +90,14 @@ function GetMoviesByFilters(filters){
     });
   
 }
-  
+
+
   
 function PrepareMenuFunctions(){
+
+  let average_text = document.getElementById("average_show");
+
+  // No se me ha ocurrido de hacer esto en un bucle porque tengo que coger el elemento de debajo del que hago click, que no es hijo ni es na
   document.getElementById("filter_genre").addEventListener("click",function(event){
     // Añadimos la clase active al contenedor de los filtros
     console.log(event.target);
@@ -94,6 +106,19 @@ function PrepareMenuFunctions(){
     // Añadimos la clase active a la flecha del titulo
     event.target.children[0].classList.toggle("arrow_active");
   });
+
+  document.getElementById("filter_average").addEventListener("click", function(event){
+    document.getElementById("slider_average").classList.toggle("filter_active");
+    average_text.classList.toggle("filter_active");
+    event.target.children[0].classList.toggle("arrow_active");
+  });  
+
+  document.getElementById("slider_average").addEventListener("input",function(event){
+    average_text.innerHTML = event.target.value; 
+    rating = event.target.value;
+    GetMoviesByFilters(genres_selected,rating);
+  })
+
 }
 
 

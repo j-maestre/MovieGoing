@@ -42,7 +42,7 @@
     <section class="all_movies_container" id="all_movies_container">
         <div class="filters" id="filters_container">
             <p class="filter_title" id="filter_genre">Genre<i class="fa-solid fa-caret-down"></i></p>
-            <section class="genre_filters checkbox-wrapper-13" id="filter_genre_container">
+            <section class="genre_filters checkbox-wrapper-13 filters_container" id="filter_genre_container">
                 <p class="filters_item"><input type="checkbox" id="c1-13" value="Action">Action</p>
                 <p class="filters_item"><input type="checkbox" id="c1-13" value="Adventure">Adventure</p>
                 <p class="filters_item"><input type="checkbox" id="c1-13" value="Animation">Animation</p>
@@ -63,6 +63,13 @@
                 <p class="filters_item"><input type="checkbox" id="c1-13" value="War">War</p>
                 <p class="filters_item"><input type="checkbox" id="c1-13" value="Western">Western</p>
             </section>
+            
+                <p class="filter_title title_average" id="filter_average">Min Average<i class="fa-solid fa-caret-down"></i></p>
+                <div class="slider_container filters_container">
+                    <input type="range" id="slider_average" class="win10-thumb slider_average" min="0" max="10" value="0" step="0.5" />
+                    <p class="average_show" id="average_show">No selected</p>
+                </div>
+   
         </div>
         <div class="movies_container" id="movies_container"></div>
     </section>
