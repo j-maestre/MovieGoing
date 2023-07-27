@@ -4,7 +4,17 @@ function onDocumentReady(){
     console.log('Ready');
     GetCartelera();
     PrepareFilters();
- 
+    PrepareMenuFunctions();
+
+    // Esto desmarca todos los filtros cuando se cambia de pagina
+    window.addEventListener("pageshow", function(event) {
+      // Seleccionamos todos los checkbox y los desmarcamos
+      let checkboxes = document.querySelectorAll("input[type='checkbox']");
+      checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+      });
+
+    });
 }
 function GetCartelera(){
     fetch("https://api.themoviedb.org/3/discover/movie?api_key="+api_key).then(function(response) {
@@ -75,7 +85,16 @@ function GetMoviesByFilters(filters){
 }
   
   
+function PrepareMenuFunctions(){
+  document.getElementById("filter_genre").addEventListener("click",function(event){
+    // Añadimos la clase active al contenedor de los filtros
+    console.log(event.target);
+    document.getElementById("filter_genre_container").classList.toggle("filter_active");
 
+    // Añadimos la clase active a la flecha del titulo
+    event.target.children[0].classList.toggle("arrow_active");
+  });
+}
 
 
 

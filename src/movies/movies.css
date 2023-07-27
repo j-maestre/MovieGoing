@@ -231,8 +231,26 @@ h1{
     flex-wrap: nowrap;
     align-content: flex-start;
     align-items: flex-start;
-    padding-right: 10px;
-    margin-left: 20px;
+    padding-right: 20px;
+    /*margin-left: 20px;*/
+}
+
+.filter_title{
+    /*margin-left: 20px;*/
+    width: 100%;
+    cursor: pointer;
+    background-color: #E1E6F9;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    z-index: 99;
+}
+
+.filter_title i{
+    margin-left: 7px;
+    font-size: large;
+    transition: all 0.3s;
 }
 
 .filters_item{
@@ -343,3 +361,37 @@ h1{
     box-sizing: inherit;
   }
 /* End CheckBox */
+
+.genre_filters p{
+    display: block;
+    transition: all 0.3s ease;  
+    opacity: 0;
+    margin-left: 20px;
+    padding: 5px;
+    padding-right: 25px;
+
+}
+
+.genre_filters{
+    position: absolute;
+    margin-top: 50px;
+    z-index: 98;
+    background-color: #E1E6F9;
+    opacity: 0;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    -webkit-box-shadow: inset -9px -10px 20px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset -9px -10px 20px -6px rgba(0,0,0,0.75);
+    box-shadow: inset -9px -10px 20px -6px rgba(0,0,0,0.75);
+}
+
+
+.filter_active, .filter_active p{
+    display: block;
+    opacity: 1;
+}
+
+.arrow_active{
+    transition: all 0.3s;
+    transform: rotateZ(180deg);
+}
