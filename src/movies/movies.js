@@ -46,10 +46,13 @@ function PrepareFilters(){
       if(event.target.checked){
         // Checkbox marcado
         genres_selected.push(event.target.value);
-        console.log(genres_selected)
-        //console.log(genres[genres_selected[0]])
       }else{
         // Checkbox desmarcado
+        let new_genres = genres_selected.filter( (value) =>{
+          return value !== event.target.value;
+        })
+        
+        genres_selected = new_genres;
 
       }
       GetMoviesByFilters(genres_selected, rating);
@@ -61,8 +64,8 @@ function PrepareFilters(){
 
 
 function GetMoviesByFilters(genres_selected = null, rating = -1.0){
-  console.log("Filters ", genres_selected);
-  console.log("Filters ", rating);
+  console.log("Genres ", genres_selected);
+  console.log("Rating ", rating);
   let query = "";
   if(genres_selected){
 
@@ -79,7 +82,6 @@ function GetMoviesByFilters(genres_selected = null, rating = -1.0){
         return response.json();
         
       }).then(function(data) {
-        console.log(data);
         document.getElementById("movies_container").innerHTML = '';
         data.results.map((value) =>{
           PrintMovie(value);
@@ -100,7 +102,6 @@ function PrepareMenuFunctions(){
   // No se me ha ocurrido de hacer esto en un bucle porque tengo que coger el elemento de debajo del que hago click, que no es hijo ni es na
   document.getElementById("filter_genre").addEventListener("click",function(event){
     // Añadimos la clase active al contenedor de los filtros
-    console.log(event.target);
     document.getElementById("filter_genre_container").classList.toggle("filter_active");
 
     // Añadimos la clase active a la flecha del titulo
