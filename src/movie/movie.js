@@ -15,6 +15,7 @@ function GetInfo(){
         return response.json();
         
       }).then(function(data) {
+        console.log(data)
         PrintMovieDetails(data);
         GetSimilar();
       }).catch(function(err) {
@@ -129,7 +130,12 @@ function PrintMovieDetails(data){
         rating_element.classList.add("very_good_rating");
     }
 
+    // Descripcion
     document.getElementById("details_movie_description").innerHTML = data.overview;
+
+    // Tagline
+    document.getElementById("tagline_movie_description").innerHTML = data.tagline;
+
 
     let filmafinity = document.getElementById("movie_filmafinity");
     filmafinity.href = filmafinity_path + data.original_title;

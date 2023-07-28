@@ -83,6 +83,7 @@ function GetMoviesByFilters(genres_selected = null, rating = -1.0){
         
       }).then(function(data) {
         document.getElementById("movies_container").innerHTML = '';
+        console.log(data);
         data.results.map((value) =>{
           PrintMovie(value);
         })

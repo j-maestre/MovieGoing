@@ -606,6 +606,7 @@ h1{
  .slider_average{
     display: none;
     margin-left: 20px;
+    margin-right: 25px;
 }
 .slider_container{
     position: absolute;
