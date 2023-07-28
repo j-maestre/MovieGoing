@@ -79,7 +79,7 @@
 }
 
 .details_movie_description{
-    height: 100px;
+    height: 85px;
     font-size: small;
     overflow: auto;
 }
@@ -281,4 +281,9 @@
     -webkit-box-shadow: 0px 0px 33px 1px rgba(250,183,0,1);
     -moz-box-shadow: 0px 0px 33px 1px rgba(250,183,0,1);
     box-shadow: 0px 0px 33px 1px rgba(250,183,0,1);
+}
+
+
+.tagline{
+    margin-bottom: 20px;
 }
