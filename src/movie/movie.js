@@ -109,28 +109,34 @@ function PrintMovieDetails(data){
     // Rating
     let rating_element = document.getElementById("movie_rating");
     rating_element.innerHTML = parseFloat(data.vote_average).toFixed(1);
-
+    
     if(data.vote_average < 4.0){
-        rating_element.classList.add("very_bad_rating");
+      rating_element.classList.add("very_bad_rating");
     }
     
     if(data.vote_average >= 4.0 && data.vote_average < 5.3){
-        rating_element.classList.add("bad_rating");
+      rating_element.classList.add("bad_rating");
     }
     
     if(data.vote_average >= 5.3 && data.vote_average < 6.5){
-        rating_element.classList.add("normal_rating");
+      rating_element.classList.add("normal_rating");
     }
     
     if(data.vote_average >= 6.5 && data.vote_average < 8.0){
-        rating_element.classList.add("good_rating");
+      rating_element.classList.add("good_rating");
     }
     
     if(data.vote_average >= 8.0){
-        rating_element.classList.add("very_good_rating");
+      rating_element.classList.add("very_good_rating");
+    }
+    
+    
+    // Descripcion
+    if(data.vote_count == 0){
+      rating_element.classList.add("normal_rating");
+      rating_element.innerHTML = "Not rated yet";
     }
 
-    // Descripcion
     document.getElementById("details_movie_description").innerHTML = data.overview;
 
     // Tagline

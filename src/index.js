@@ -182,6 +182,13 @@ function PrintMovie(value, container_id = "movies_container"){
     rating.innerHTML = parseFloat(value.vote_average).toFixed(1);
     principal_container.appendChild(rating);
 
+    // Descripcion
+    if(value.vote_count == 0){
+      rating.classList.add("normal_rating");
+      rating.innerHTML = "Not rated yet";
+    }
+
+
     // Guardar en mi lista
     let list = document.createElement("p");
     list.classList.add("list_button");
