@@ -3,8 +3,14 @@ window.addEventListener('load', onDocumentReady, false);
 function onDocumentReady(){
     console.log("Ready Index");
     GetUser();
+    document.getElementById("search_button").addEventListener("click",SearchMovie);
 }
 
+function SearchMovie(){
+  let movie_name = document.getElementById("input_search").value;
+  sessionStorage.setItem("MovieToSearch", movie_name);
+  window.location.href = "../search/search.html"
+}
 
 function GetUser(){
     let isLogged = localStorage.getItem("islogged");

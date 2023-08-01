@@ -80,7 +80,7 @@ h2{font-size: 22px;}
 .button-group {
 	margin-top: calc(var(--size-bezel) * 2.5);
 }
-button {
+button{
 	color: currentColor;
 	padding: var(--size-bezel) calc(var(--size-bezel) * 2);
 	background: var(--color-accent);
@@ -191,7 +191,17 @@ li a{
 }
 
 .head{
-    padding-bottom: 140px;
+    /*padding-bottom: 140px;^*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.perfil{
+    margin-left: auto;
 }
 /* End Nav bar menu */
 
@@ -347,3 +357,31 @@ li a{
 }
 
 /* END MOVIE CARD */
+
+/* Search button */
+
+.input_search, .search_button{
+    padding: 10px;
+}
+
+.search_button{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.search_button:hover{
+    cursor: pointer;
+}
+
+/* X que aparece al hacer focus
+/* Estilo para WebKit (Chrome y Safari) */
+input[type="search"]::-webkit-search-cancel-button:hover {
+    cursor: pointer;
+}
+  
+/* Estilo para Microsoft (Internet Explorer y Edge) */
+input[type="search"]::-ms-clear {
+    cursor: pointer;
+}
+
+/* End search button */
