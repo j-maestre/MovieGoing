@@ -9,10 +9,19 @@ function onDocumentReady(){
     GetCartelera();
     PrepareFilters();
     PrepareMenuFunctions();
+
     document.getElementById("next_page").addEventListener("click",function NextPage(){
       actual_page = actual_page + 1;
       GetMoviesByFilters(genres_selected,rating,actual_page);
     });
+    
+    document.getElementById("previous_page").addEventListener("click",function NextPage(){
+      if(actual_page > 1){
+        actual_page = actual_page - 1;
+      }
+      GetMoviesByFilters(genres_selected,rating,actual_page);
+    });
+
     // Esto desmarca todos los filtros cuando se cambia de pagina
     window.addEventListener("pageshow", function(event) {
       // Seleccionamos todos los checkbox y los desmarcamos
@@ -22,7 +31,9 @@ function onDocumentReady(){
       });
 
     });
-}
+
+    
+  }
 function GetCartelera(){
     fetch("https://api.themoviedb.org/3/discover/movie?api_key="+api_key).then(function(response) {
         return response.json();
@@ -93,6 +104,8 @@ function GetMoviesByFilters(genres_selected = null, rating = -1.0, actual_page){
         data.results.map((value) =>{
           PrintMovie(value);
         })
+
+        document.getElementById("actual_page_marker").innerHTML = actual_page;
         
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
