@@ -640,3 +640,31 @@ h1{
     display: block;
     opacity: 1;
 }
+
+.page_selector{
+    display: block;
+}
+
+.page_selector:hover{
+    cursor: pointer;
+}
+
+
+.movies_and_buttons_container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+}
+
+.page_selector_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+}
+.page_selector_container *{
+    margin: 10px;
+}
