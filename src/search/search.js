@@ -10,8 +10,17 @@ function onDocumentReady(){
       }).then(function(data) {
        
         console.log(data);
+        console.log(data.results.length);
+
+        document.getElementById("search_movie_title").innerHTML = movieName;
+
+        if(data.results.length == 0){
+          let title = document.createElement("h2");
+          title.innerHTML = "0 results";
+          document.getElementById("movies_container").appendChild(title);
+          document.body.style.height = '100%';
+        }
         data.results.map((value)=>{
-            
             PrintMovie(value);
         })
         
