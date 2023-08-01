@@ -1,11 +1,18 @@
 window.addEventListener('load',onDocumentReady,false);
 
+let actual_page = 1;
+let genres_selected = [];
+let rating = -1.0;
+
 function onDocumentReady(){
     console.log('Ready');
     GetCartelera();
     PrepareFilters();
     PrepareMenuFunctions();
-
+    document.getElementById("next_page").addEventListener("click",function NextPage(){
+      actual_page = actual_page + 1;
+      GetMoviesByFilters(genres_selected,rating,actual_page);
+    });
     // Esto desmarca todos los filtros cuando se cambia de pagina
     window.addEventListener("pageshow", function(event) {
       // Seleccionamos todos los checkbox y los desmarcamos
@@ -34,8 +41,7 @@ function PrintCartelera(data){
     })
 }
 
-let genres_selected = [];
-let rating = -1.0;
+
 
 function PrepareFilters(){
   const allInputs = document.getElementsByTagName('input');
@@ -55,7 +61,7 @@ function PrepareFilters(){
         genres_selected = new_genres;
 
       }
-      GetMoviesByFilters(genres_selected, rating);
+      GetMoviesByFilters(genres_selected, rating, actual_page);
     })
 
     
@@ -63,7 +69,7 @@ function PrepareFilters(){
 }
 
 
-function GetMoviesByFilters(genres_selected = null, rating = -1.0){
+function GetMoviesByFilters(genres_selected = null, rating = -1.0, actual_page){
   console.log("Genres ", genres_selected);
   console.log("Rating ", rating);
   let query = "";
@@ -78,7 +84,7 @@ function GetMoviesByFilters(genres_selected = null, rating = -1.0){
   query = query.slice(0,-1);
 
 
-  fetch("https://api.themoviedb.org/3/discover/movie?api_key="+api_key+"&with_genres="+query+"&vote_average.gte="+rating).then(function(response) {
+  fetch("https://api.themoviedb.org/3/discover/movie?api_key="+api_key+"&with_genres="+query+"&vote_average.gte="+rating + "&page="+actual_page).then(function(response) {
         return response.json();
         
       }).then(function(data) {
@@ -118,7 +124,7 @@ function PrepareMenuFunctions(){
   document.getElementById("slider_average").addEventListener("input",function(event){
     average_text.innerHTML = event.target.value; 
     rating = event.target.value;
-    GetMoviesByFilters(genres_selected,rating);
+    GetMoviesByFilters(genres_selected,rating, actual_page);
   })
 
 }
