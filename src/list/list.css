@@ -7,7 +7,8 @@ h1{
 }
 
 body, html{
-    height: 100% !important;
+    /*height: 100% !important;*/
+    height: auto;
 }
 
 /*
