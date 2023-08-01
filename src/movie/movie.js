@@ -15,6 +15,7 @@ function GetInfo(){
         return response.json();
         
       }).then(function(data) {
+        console.log("movie_details")
         console.log(data)
         PrintMovieDetails(data);
         GetSimilar();
