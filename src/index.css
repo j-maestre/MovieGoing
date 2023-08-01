@@ -2,7 +2,7 @@
  :root {
 	 --color-light: white;
 	 --color-dark: #212121;
-	 --color-grey: #393939;
+	 --color-grey: #767676;
 	 --color-signal: #fab700;
 	 /*--color-shadow: black;*/
 	 --color-soft-shadow: #4b4b4b;
@@ -385,3 +385,11 @@ input[type="search"]::-ms-clear {
 }
 
 /* End search button */
+
+.disabled{
+    background-color: var(--color-grey) !important;
+}
+
+.more_margin_left{
+    margin-left: 6% !important;
+}

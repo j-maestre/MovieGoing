@@ -3,6 +3,8 @@ window.addEventListener('load',onDocumentReady,false);
 let actual_page = 1;
 let genres_selected = [];
 let rating = -1.0;
+let max_page = 1;
+let total_movies = 0;
 
 function onDocumentReady(){
     console.log('Ready');
@@ -11,7 +13,9 @@ function onDocumentReady(){
     PrepareMenuFunctions();
 
     document.getElementById("next_page").addEventListener("click",function NextPage(){
-      actual_page = actual_page + 1;
+      if(actual_page < max_page){
+        actual_page = actual_page + 1;
+      }
       GetMoviesByFilters(genres_selected,rating,actual_page);
     });
     
@@ -33,20 +37,51 @@ function onDocumentReady(){
     });
 
     
+}
+
+function CheckPageRange(){
+  if(actual_page == max_page){
+    document.getElementById("next_page").classList.add("disabled");
+  }else{
+    document.getElementById("next_page").classList.remove("disabled");
   }
+  
+  if(actual_page == 1){
+    document.getElementById("previous_page").classList.add("disabled");
+  }else{
+    document.getElementById("previous_page").classList.remove("disabled");
+  }
+
+  // Si hay 3 o menos cuidao
+  if(total_movies <= 3){
+    document.getElementById("movies_and_buttons_container").classList.add("more_margin_left");
+  }else{
+    document.getElementById("movies_and_buttons_container").classList.remove("more_margin_left");
+  }
+
+  if(total_movies <= 4){
+    document.body.style.height = '100%';
+  }else{
+    document.body.style.height = 'auto';
+  }
+}
+
 function GetCartelera(){
     fetch("https://api.themoviedb.org/3/discover/movie?api_key="+api_key).then(function(response) {
         return response.json();
         
       }).then(function(data) {
         PrintCartelera(data);
+        total_movies = data.total_results;
+        CheckPageRange();
         
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
       });}
 
 function PrintCartelera(data){
-    
+    console.log(data);
+    max_page = data.total_pages;
     data.results.map((value) =>{
       PrintMovie(value);
     })
@@ -101,9 +136,12 @@ function GetMoviesByFilters(genres_selected = null, rating = -1.0, actual_page){
       }).then(function(data) {
         document.getElementById("movies_container").innerHTML = '';
         console.log(data);
+        max_page = data.total_pages;
         data.results.map((value) =>{
           PrintMovie(value);
         })
+        total_movies = data.total_results;
+        CheckPageRange();
 
         document.getElementById("actual_page_marker").innerHTML = actual_page;
         
