@@ -133,7 +133,7 @@ function isInList(id){
 // Function to print movie card in a container
 function PrintMovie(value, container_id = "movies_container"){
 
-    //console.log(value);
+    console.log(value);
     let container = document.getElementById(container_id);
   
     let newDiv = document.createElement("div");
@@ -227,7 +227,7 @@ function PrintMovie(value, container_id = "movies_container"){
 
     // Title
     let title = document.createElement("p");
-    title.innerHTML = value.original_title;
+    title.innerHTML = value.title;
     principal_container.appendChild(title);
     
     // Description
@@ -235,7 +235,7 @@ function PrintMovie(value, container_id = "movies_container"){
     //description.innerHTML = value.overview;
     description.innerHTML = "Read on filmafinity";
     description.classList.add("movie_description");
-    description.href = filmafinity_path + value.original_title;
+    description.href = filmafinity_path + value.title;
     description.target = "_blank";
     newDiv.appendChild(description);
 

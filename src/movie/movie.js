@@ -144,7 +144,7 @@ function PrintMovieDetails(data){
 
 
     let filmafinity = document.getElementById("movie_filmafinity");
-    filmafinity.href = filmafinity_path + data.original_title;
+    filmafinity.href = filmafinity_path + data.title;
 
     // Translation
     let lenguajes = document.getElementById("movie_languajes");

@@ -40,6 +40,7 @@ function CalculeRandom(data){
         let randomMovie = Math.floor(Math.random() * (data.results.length - 1));
         console.log(randomMovie);
         console.log(data.results[randomMovie]);
+        document.getElementById("movies_container").innerHTML="";
         PrintMovie(data.results[randomMovie]);
         
         
