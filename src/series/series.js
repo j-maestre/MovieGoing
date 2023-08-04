@@ -2,11 +2,11 @@ window.addEventListener('load', onDocumentReady, false);
 
 function onDocumentReady(){
     console.log("Ready");
-    GetPopular();
+    GetSeries();
 
 }
 
-function GetPopular(){
+function GetSeries(){
     fetch("https://api.themoviedb.org/3/tv/popular?api_key="+api_key).then(function(response) {
         return response.json();
         
