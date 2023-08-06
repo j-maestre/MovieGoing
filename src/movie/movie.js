@@ -2,9 +2,90 @@ window.addEventListener('load', onDocumentReady, false);
 
 function onDocumentReady(){
     GetInfo();
+    GetVideos();
 
 }
 
+function GetVideos(){
+  let id = localStorage.getItem("Details");
+  fetch("https://api.themoviedb.org/3/movie/"+id+"/videos?api_key="+api_key).then(function(response) {
+        return response.json();
+        
+      }).then(function(data) {
+        console.log("VIDEOS")
+        console.log(data.results)
+        GetMainTrailer(data.results)
+      }).catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+}
+
+function OpenTrailer(path){
+  window.open(path);
+}
+
+
+function GetMainTrailer(data){
+  let official = false;
+  let trailer_container = document.getElementById("details_movie_trailer");
+  
+
+  // Buscamos el main trailer
+  official = SearchTrailer(data, "Main Trailer");
+  if(official){
+    trailer_container.addEventListener("click",function(){
+      OpenTrailer(youtube_trailer_path+official);
+    });
+  }
+
+  // Si no lo encontramos buscamos otro
+  if(!official){
+    official = SearchTrailer(data, "Official Trailer");
+    if(official){
+      trailer_container.addEventListener("click",function(){
+        OpenTrailer(youtube_trailer_path+official);
+      });
+    }
+  }
+  
+  
+  // Si no lo encontramos buscamos otro
+  if(!official){
+    official = SearchTrailer(data, "Teaser Trailer");
+    if(official){  
+      trailer_container.addEventListener("click",function(){
+        OpenTrailer(youtube_trailer_path+official);
+      });
+    }
+  }
+
+  // Si llegados a este punto no hay, cogemos el primero y au
+  if(!official && data.length > 0){
+    official = data[0].key;
+    trailer_container.addEventListener("click",function(){
+      OpenTrailer(youtube_trailer_path+official);
+    });
+  }
+  
+  // Si tampoco hay pues de momento que le den por culo
+  if(!official){
+    trailer_container.innerHTML = "";
+  }
+}
+
+function SearchTrailer(data, name){
+  let result = false;
+  data.map((value) =>{
+    if(value.official === true && value.type == "Trailer"){
+      if(value.name == name && value.site == "YouTube"){
+        console.log(value);
+        result = value.key;
+      }
+    }
+  });
+
+  return result;
+}
 
 function GetInfo(){
 

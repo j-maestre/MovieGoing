@@ -74,7 +74,7 @@
     transition: all 0.2s;
 }
 
-.movie_platforms img:hover{
+.movie_platforms img:hover, .details_movie_trailer:hover{
     transform: scale(1.2);
 }
 
@@ -286,4 +286,25 @@
 
 .tagline{
     margin-bottom: 20px;
+}
+
+.details_movie_trailer{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var( --color-grey);
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 15px;
+    transition: all 0.2s;
+}
+
+.details_movie_trailer:hover{
+    cursor: pointer;
+}
+
+.details_movie_trailer p{
+    margin-left: 10px;
 }
