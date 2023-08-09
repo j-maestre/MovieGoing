@@ -106,7 +106,7 @@ function GetInfo(type){
         console.log("movie_details")
         console.log(data)
         PrintMovieDetails(data,type);
-        GetSimilar();
+        GetSimilar(type);
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
       });
@@ -289,10 +289,10 @@ function PrintMovieDetails(data, type){
 
 }
 
-function GetSimilar(){
+function GetSimilar(type){
     let id = localStorage.getItem("Details");
 
-    fetch("https://api.themoviedb.org/3/movie/"+id+"/similar?api_key="+api_key).then(function(response) {
+    fetch("https://api.themoviedb.org/3/"+type+"/"+id+"/similar?api_key="+api_key).then(function(response) {
         return response.json();
         
       }).then(function(data) {
@@ -302,11 +302,15 @@ function GetSimilar(){
       });
 }
 
-function PrintSimilar(data){
+function PrintSimilar(data, type){
     let container = document.getElementById("similar_container");
 
     data.results.map( (value) =>{
-      PrintMovie(value, "similar_container");    
+      if(type == "movie"){
+        PrintMovie(value, "similar_container");    
+      }else{
+        PrintSerie(value, "similar_container");
+      }
     });
 
 }
