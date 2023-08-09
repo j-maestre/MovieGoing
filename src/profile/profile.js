@@ -137,29 +137,51 @@ SlideShow.init();
 
 function onDocumentReady(){
   let input_file = document.getElementById("file_pic");
+
   input_file.addEventListener("change", function(event) {
     console.log("CHANGE")
     // Obtiene el archivo seleccionado
     const selectedFile = event.target.files[0];
+    if(selectedFile){
 
-    // Crea un objeto FileReader
-    const reader = new FileReader();
-    console.log(reader)
+      
+      // Crea un objeto FileReader
+      let reader = new FileReader();
+      console.log(reader)
+      console.log(reader.result)
+      reader.readAsDataURL(selectedFile);
 
-    // Escucha el evento "load" cuando la lectura del archivo está completa
-    reader.addEventListener('load', function() {
+      
+      reader.onloadend = function (){
+        console.log("LOADEND")
+        const base64Image = reader.result;
+        let userLogged = JSON.parse(localStorage.getItem("UserLogged"));
+        userLogged.ProfilePic = base64Image;
 
-      // El resultado de la lectura es una cadena Base64
-      const base64Image = reader.result;
+        console.log("imagen cambiada");
+        console.log(userLogged)
+        localStorage.setItem("UserLogged", JSON.stringify(userLogged));
+        SaveUser();
+        GetUser();
+        
+      }
 
-      // Utiliza la cadena Base64 como desees (por ejemplo, asignarla a una imagen)
-      //const imgElement = document.getElementById('imagen');
-      //imgElement.src = base64Image;
-
-      let userLogged = JSON.parse(localStorage.getItem("UserLogged"));
-      userLogged.ProfilePic = base64Image;
-      console.log("imagen cambiada");
-    });
-
+      
+    }
   });
+}
+
+
+function SaveUser(){
+  let userLogged = JSON.parse(localStorage.getItem("UserLogged"));
+  let users = JSON.parse(localStorage.getItem("UsersRegistered"));
+
+
+  users.map((value,i)=>{
+    // El usuario coincide
+    if(value.Username == userLogged.Username){
+      value[i] = userLogged;
+      localStorage.setItem("UsersRegistered", JSON.stringify(users));
+    }
+  })
 }

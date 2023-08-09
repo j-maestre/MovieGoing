@@ -37,7 +37,8 @@ function GetUser(){
         })
 
         let profile_pic = document.createElement("img");
-        profile_pic.src = userLogged.profile_pic ? userLogged.profile_pic: "https://thispersondoesnotexist.com/" ;
+        console.log(userLogged.profile_pic)
+        profile_pic.src = userLogged.ProfilePic ? userLogged.ProfilePic: "https://thispersondoesnotexist.com/" ;
         //profile_pic.src = "https://thispersondoesnotexist.com/";
         
         
