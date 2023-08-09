@@ -106,7 +106,9 @@ function GetInfo(type){
         console.log("movie_details")
         console.log(data)
         // Hacer distincion
+        
         PrintMovieDetails(data,type);
+        
         GetSimilar(type);
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
@@ -143,7 +145,12 @@ function PrintMovieDetails(data, type){
       status.classList.add("status_waiting");
     }
 
-    document.getElementById("movie_title").innerHTML = data.name + " (" + data.first_air_date.substring(0,4) + ")";
+    console.log(type);
+    if(type == "movie"){
+      document.getElementById("movie_title").innerHTML = data.title + " (" + data.release_date.substring(0,4) + ")";
+    }else{
+      document.getElementById("movie_title").innerHTML = data.name + " (" + data.first_air_date.substring(0,4) + ")";
+    }
     
     // Guardar en mi lista
     //let icon = document.getElementById("details_list_bookmark");
@@ -234,7 +241,11 @@ function PrintMovieDetails(data, type){
 
 
     let filmafinity = document.getElementById("movie_filmafinity");
-    filmafinity.href = filmafinity_path + data.title;
+    if(type == "movie"){
+      filmafinity.href = filmafinity_path + data.title;
+    }else{
+      filmafinity.href = filmafinity_path + data.title;
+    }
 
     // Translation
     let lenguajes = document.getElementById("movie_languajes");
@@ -251,16 +262,22 @@ function PrintMovieDetails(data, type){
         return response.json();
         
       }).then(function(data) {
+        console.log(data)
+        console.log(data.results["TW"]);
         
-        console.log(data.results["ES"]);
-        // Hay veces que existe buy, otras que existe flatrate, otras que existe ads y otras que existen todas
-        // Tambien esta "rent" pero me la pela
-        let esp = data.results["ES"].buy?data.results["ES"].buy:[];
-        PrintProviders(esp);
-        esp = data.results["ES"].flatrate?data.results["ES"].flatrate:[];
-        PrintProviders(esp);
-        esp = data.results["ES"].ads?data.results["ES"].ads:[];
-        PrintProviders(esp);
+        if(type == "movie"){
+          // Hay veces que existe buy, otras que existe flatrate, otras que existe ads y otras que existen todas
+          // Tambien esta "rent" pero me la pela
+          let esp = data.results["ES"].buy?data.results["ES"].buy:[];
+          PrintProviders(esp);
+          esp = data.results["ES"].flatrate?data.results["ES"].flatrate:[];
+          PrintProviders(esp);
+          esp = data.results["ES"].ads?data.results["ES"].ads:[];
+          PrintProviders(esp);
+        }else{
+          let esp = data.results["ES"].flatrate?data.results["ES"].flatrate:[];
+          PrintProviders(esp);
+        }
 
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
