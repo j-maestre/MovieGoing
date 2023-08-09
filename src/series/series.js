@@ -12,22 +12,18 @@ function GetSeries(){
         
       }).then(function(data) {
         //console.log(data);
-        PrintMovies(data);
+        PrintSeries(data);
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
       });
 
 }
 
+function PrintSeries(data){
+  console.log("hola")
+  data.results.map((value)=>{
+    console.log(value)
+    PrintSerie(value)
 
-function PrintMovies(data){
-
-    console.log(data);
-    console.log(data.results[0]);
-
-    data.results.map( (value) =>{
-        
-      PrintMovie(value)
-    });
-
+  })
 }

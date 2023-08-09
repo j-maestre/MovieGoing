@@ -1,14 +1,21 @@
 window.addEventListener('load', onDocumentReady, false);
 
 function onDocumentReady(){
-    GetInfo();
-    GetVideos();
+    let type = localStorage.getItem("Type")
+    if(type == "Film"){
+      GetInfo("movie")
+      GetVideos("movie");
+    }else{
+      GetInfo("tv")
+      GetVideos("tv");
+    }
+  
 
 }
 
-function GetVideos(){
+function GetVideos(type){
   let id = localStorage.getItem("Details");
-  fetch("https://api.themoviedb.org/3/movie/"+id+"/videos?api_key="+api_key).then(function(response) {
+  fetch("https://api.themoviedb.org/3/"+type+"/"+id+"/videos?api_key="+api_key).then(function(response) {
         return response.json();
         
       }).then(function(data) {
@@ -87,18 +94,18 @@ function SearchTrailer(data, name){
   return result;
 }
 
-function GetInfo(){
+function GetInfo(type){
 
     let id = localStorage.getItem("Details");
     let container = document.getElementById("details_container");
 
-    fetch("https://api.themoviedb.org/3/movie/"+id+"?api_key="+api_key).then(function(response) {
+    fetch("https://api.themoviedb.org/3/"+type+"/"+id+"?api_key="+api_key).then(function(response) {
         return response.json();
         
       }).then(function(data) {
         console.log("movie_details")
         console.log(data)
-        PrintMovieDetails(data);
+        PrintMovieDetails(data,type);
         GetSimilar();
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
@@ -119,7 +126,7 @@ function PrintProviders(providers){
   });
 }
 
-function PrintMovieDetails(data){
+function PrintMovieDetails(data, type){
     let container = document.getElementById("movie");
     container.style.backgroundImage = `url('${img_path+data.backdrop_path}')`;
 
@@ -135,7 +142,7 @@ function PrintMovieDetails(data){
       status.classList.add("status_waiting");
     }
 
-    document.getElementById("movie_title").innerHTML = data.title + " (" + data.release_date.substring(0,4) + ")";
+    document.getElementById("movie_title").innerHTML = data.name + " (" + data.first_air_date.substring(0,4) + ")";
     
     // Guardar en mi lista
     //let icon = document.getElementById("details_list_bookmark");
@@ -239,10 +246,11 @@ function PrintMovieDetails(data){
     lenguajes.innerHTML += names;
 
     // Platforms
-    fetch("https://api.themoviedb.org/3/movie/"+localStorage.getItem("Details")+"/watch/providers?api_key="+api_key).then(function(response) {
+    fetch("https://api.themoviedb.org/3/"+type+"/"+localStorage.getItem("Details")+"/watch/providers?api_key="+api_key).then(function(response) {
         return response.json();
         
       }).then(function(data) {
+        
         console.log(data.results["ES"]);
         // Hay veces que existe buy, otras que existe flatrate, otras que existe ads y otras que existen todas
         // Tambien esta "rent" pero me la pela
