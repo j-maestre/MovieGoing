@@ -7,7 +7,7 @@ function onDocumentReady(){
 }
 
 function GetSeries(){
-    fetch("https://api.themoviedb.org/3/tv/popular?api_key="+api_key).then(function(response) {
+    fetch("https://api.themoviedb.org/3/tv/top_rated?api_key="+api_key).then(function(response) {
         return response.json();
         
       }).then(function(data) {

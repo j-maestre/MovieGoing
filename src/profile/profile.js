@@ -1,3 +1,5 @@
+window.addEventListener("load", onDocumentReady, false);
+
 // Debounce
 function debounce(a,b,c){var d;return function(){var e=this,f=arguments;clearTimeout(d),d=setTimeout(function(){d=null,c||a.apply(e,f)},b),c&&!d&&a.apply(e,f)}}
 
@@ -131,4 +133,33 @@ var SlideShow = function() {
   
 }();
 
-SlideShow.init(); 
+SlideShow.init();
+
+function onDocumentReady(){
+  let input_file = document.getElementById("file_pic");
+  input_file.addEventListener("change", function(event) {
+    console.log("CHANGE")
+    // Obtiene el archivo seleccionado
+    const selectedFile = event.target.files[0];
+
+    // Crea un objeto FileReader
+    const reader = new FileReader();
+    console.log(reader)
+
+    // Escucha el evento "load" cuando la lectura del archivo está completa
+    reader.addEventListener('load', function() {
+
+      // El resultado de la lectura es una cadena Base64
+      const base64Image = reader.result;
+
+      // Utiliza la cadena Base64 como desees (por ejemplo, asignarla a una imagen)
+      //const imgElement = document.getElementById('imagen');
+      //imgElement.src = base64Image;
+
+      let userLogged = JSON.parse(localStorage.getItem("UserLogged"));
+      userLogged.ProfilePic = base64Image;
+      console.log("imagen cambiada");
+    });
+
+  });
+}

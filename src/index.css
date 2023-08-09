@@ -179,6 +179,10 @@ li::before {
     float: right;
     
 }
+.perfil_container{
+    display: flex;
+}
+
 .logomoviegoing{
     width: 100px;
     margin-top: -15px;

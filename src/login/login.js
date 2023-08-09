@@ -171,6 +171,7 @@ function SingIn(){
                 "LastName": last_name,
                 "Email": email,
                 "Password": CryptoJS.MD5(passwd).toString(),
+                "ProfilePic": null,
                 "List": null,
             }
 

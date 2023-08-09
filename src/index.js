@@ -30,13 +30,25 @@ function GetUser(){
         console.log(userLogged);
         
         let profile_container = document.getElementById("profile_container");
+        let container = document.createElement("div");
+        container.classList.add("perfil_container");
+        container.addEventListener("click", function(){
+          window.location.href = "../profile/profile.html"
+        })
+
         let profile_pic = document.createElement("img");
-        profile_pic.src = "https://thispersondoesnotexist.com/";
-        profile_container.appendChild(profile_pic);
+        profile_pic.src = userLogged.profile_pic ? userLogged.profile_pic: "https://thispersondoesnotexist.com/" ;
+        //profile_pic.src = "https://thispersondoesnotexist.com/";
+        
+        
+        container.appendChild(profile_pic);
+        //profile_container.appendChild(profile_pic);
+        profile_container.appendChild(container);
         profile_element.innerHTML = userLogged.Username;   
 
         // Como no hay link, metemos el texto tal cual
-        profile_container.appendChild(profile_element);
+        //profile_container.appendChild(profile_element);
+        container.appendChild(profile_element);
     }else{
         // Creamos elemento a para enlace a Login
         let link = document.createElement("a");
