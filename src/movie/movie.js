@@ -314,7 +314,7 @@ function GetSimilar(type){
         return response.json();
         
       }).then(function(data) {
-        PrintSimilar(data);
+        PrintSimilar(data, type);
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
       });
