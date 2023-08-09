@@ -135,7 +135,11 @@ var SlideShow = function() {
 
 SlideShow.init();
 
+
 function onDocumentReady(){
+
+  FillWithUserData();
+  let base64Image = false;
   let input_file = document.getElementById("file_pic");
 
   input_file.addEventListener("change", function(event) {
@@ -147,41 +151,45 @@ function onDocumentReady(){
       
       // Crea un objeto FileReader
       let reader = new FileReader();
-      console.log(reader)
-      console.log(reader.result)
       reader.readAsDataURL(selectedFile);
 
-      
       reader.onloadend = function (){
         console.log("LOADEND")
-        const base64Image = reader.result;
-        let userLogged = JSON.parse(localStorage.getItem("UserLogged"));
-        userLogged.ProfilePic = base64Image;
-
-        console.log("imagen cambiada");
-        console.log(userLogged)
-        localStorage.setItem("UserLogged", JSON.stringify(userLogged));
-        SaveUser();
-        GetUser();
-        
+        base64Image = reader.result;
       }
 
       
     }
   });
+
+
+
+  document.getElementById("saveData").addEventListener("click", function(){        
+
+    let userLogged = JSON.parse(localStorage.getItem("UserLogged"));
+    if(base64Image){
+      userLogged.ProfilePic = base64Image;
+      document.getElementById("profile_pic").src = base64Image; 
+      console.log("imagen cambiada");
+    }
+
+    userLogged.Username = document.getElementById("fc_user_name").value ? document.getElementById("fc_user_name").value:userLogged.Username;
+    userLogged.Name = document.getElementById("fc_name").value ? document.getElementById("fc_name").value:userLogged.Name;
+    userLogged.LastName = document.getElementById("fc_last_name").value ? document.getElementById("fc_last_name").value:userLogged.LastName;
+    userLogged.Email = document.getElementById("fc_email").value ? document.getElementById("fc_email").value:userLogged.Email;
+
+    console.log(document.getElementById("fc_name").value);
+    console.log(userLogged)
+    SaveUser(userLogged);
+    //GetUser();
+  });
 }
 
-
-function SaveUser(){
+function FillWithUserData(){
   let userLogged = JSON.parse(localStorage.getItem("UserLogged"));
-  let users = JSON.parse(localStorage.getItem("UsersRegistered"));
 
-
-  users.map((value,i)=>{
-    // El usuario coincide
-    if(value.Username == userLogged.Username){
-      value[i] = userLogged;
-      localStorage.setItem("UsersRegistered", JSON.stringify(users));
-    }
-  })
+  document.getElementById("label_username").innerHTML = userLogged.Username;
+  document.getElementById("label_name").innerHTML = userLogged.Name;
+  document.getElementById("label_last_name").innerHTML = userLogged.LastName;
+  document.getElementById("label_email").innerHTML = userLogged.Email;
 }

@@ -105,6 +105,7 @@ function GetInfo(type){
       }).then(function(data) {
         console.log("movie_details")
         console.log(data)
+        // Hacer distincion
         PrintMovieDetails(data,type);
         GetSimilar(type);
       }).catch(function(err) {

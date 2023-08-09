@@ -30,6 +30,8 @@ function GetUser(){
         console.log(userLogged);
         
         let profile_container = document.getElementById("profile_container");
+        profile_container.innerHTML = "";
+
         let container = document.createElement("div");
         container.classList.add("perfil_container");
         container.addEventListener("click", function(){
@@ -37,6 +39,7 @@ function GetUser(){
         })
 
         let profile_pic = document.createElement("img");
+        profile_pic.id = "profile_pic"
         console.log(userLogged.profile_pic)
         profile_pic.src = userLogged.ProfilePic ? userLogged.ProfilePic: "https://thispersondoesnotexist.com/" ;
         //profile_pic.src = "https://thispersondoesnotexist.com/";
@@ -385,4 +388,21 @@ function PrintSerie(value, container_id = "series_container"){
   
 
 
+}
+
+
+function SaveUser(newUser){
+  console.log("Guardando usuario...");
+  let userLogged = JSON.parse(localStorage.getItem("UserLogged"));
+  let users = JSON.parse(localStorage.getItem("UsersRegistered"));
+
+  users.map((value,i)=>{
+   
+    // El usuario coincide
+    if(value.Username == userLogged.Username){
+      users[i] = newUser;
+      localStorage.setItem("UsersRegistered", JSON.stringify(users));
+      localStorage.setItem("UserLogged", JSON.stringify(newUser));
+    }
+  })
 }

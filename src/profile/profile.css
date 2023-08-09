@@ -1,4 +1,4 @@
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+/*@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
  * {
 	 box-sizing: border-box;
 }
@@ -9,7 +9,7 @@
 }
  body {
 	 background-color: #000;
-	 font-family: 'industry';
+	
 }
  .slideShow {
 	 height: 100%;
@@ -111,4 +111,47 @@
 	 opacity: 0.3;
 	 cursor: default;
 }
- 
+ */
+body{
+	height: 100%;
+}
+
+.btn_save:hover{
+	cursor: pointer;
+}
+
+.btn-reset:hover{
+	cursor: pointer;
+}
+
+.input-file:hover, .file_input_label:hover{
+	cursor: pointer;
+}
+
+input[type="file" i]{
+	cursor: pointer !important;
+}
+
+.input_container{
+	margin-bottom: 25px;
+}
+
+.profile_container{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+	margin-left: 25px;
+}
+
+.card_input{
+	margin-right: 25px;
+}
+
+.input__field{
+	max-width: 100% !important;
+	width: 100% !important;
+}

@@ -39,8 +39,8 @@
 <html>
 <head>
     <title>MovieGoing</title>
-    <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="profile.css">
     <link rel="apple-touch-icon" sizes="57x57" href="../../data/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../../data/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="../../data/apple-icon-72x72.png">
@@ -74,19 +74,77 @@
             <li class="perfil" id="profile_container"></li>
     </div>
 
-    <section class="profile_container">
-        <div class="profile_img">
-            <p>Select img</p>
-            <input type="file" id="file_pic" />
+    
+    <section class="card profile_container">
+
+        <div class="card_input" id="singin">
+            <h2><svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-coffee" href="#icon-coffee" /></svg>New profile</h2>
+                
+                <div class="input_container">
+                    <label class="input">
+                        <input id="fc_user_name" class="input__field" type="text" placeholder=" " />
+                        <span class="input__label" id="label_username">Username</span>
+                    </label>
+                </div>
+                
+                <div class="input_container">
+                    <label class="input">
+                        <input id="fc_name" class="input__field" type="text" placeholder=" " />
+                        <span class="input__label" id="label_name">Name</span>
+                    </label>
+                </div>
+                
+                <div class="input_container">
+                    <label class="input">
+                        <input id="fc_last_name" class="input__field" type="text" placeholder=" " />
+                        <span class="input__label" id="label_last_name">Last name</span>
+                    </label>
+                </div>
+                
+                <div class="input_container">
+                    <label class="input">
+                        <input id="fc_email" class="input__field" type="email" placeholder=" " />
+                        <span class="input__label" id="label_email">Email</span>
+                    </label>
+                </div>
+                
+                <div class="input_container">
+                    <label class="input">
+                        <input id="fc_passwd" class="input__field" type="password" placeholder=" " />
+                        <span class="input__label" id="label_passwd">New Password</span>
+                    </label>
+            </div>
+            
+            <div class="input_container">
+                <label for="fileInput" class="file_input_label">
+                    <p>Profile image</p>
+                    <input type="file" id="file_pic" class="input-file"/>
+                </label>
+            </div>
+            
+            
+            <div class="button-group">
+                <button class="btn_save" id="saveData">Save changes</button>
+                <button type="reset" class="btn-reset">Reset</button>
+            </div>
         </div>
-        <div class="profile_info">
-            <p>Nombre</p>
-            <p>Apellidos</p>
-            <p>Correo</p>
-        </div>
+
+        
+        
     </section>
     
-    
+      <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+        <symbol id="icon-coffee" viewBox="0 0 20 20">
+          <title>icon-coffee</title>
+          <path fill="currentColor" d="M15,17H14V9h3a3,3,0,0,1,3,3h0A5,5,0,0,1,15,17Zm1-6v3.83A3,3,0,0,0,18,12a1,1,0,0,0-1-1Z"/>
+          <rect fill="currentColor" x="1" y="7" width="15" height="12" rx="3" ry="3"/>
+          <path fill="var(--color-accent)" d="M7.07,5.42a5.45,5.45,0,0,1,0-4.85,1,1,0,0,1,1.79.89,3.44,3.44,0,0,0,0,3.06,1,1,0,0,1-1.79.89Z"/>
+          <path fill="var(--color-accent)" d="M3.07,5.42a5.45,5.45,0,0,1,0-4.85,1,1,0,0,1,1.79.89,3.44,3.44,0,0,0,0,3.06,1,1,0,1,1-1.79.89Z"/>
+          <path fill="var(--color-accent)" d="M11.07,5.42a5.45,5.45,0,0,1,0-4.85,1,1,0,0,1,1.79.89,3.44,3.44,0,0,0,0,3.06,1,1,0,1,1-1.79.89Z"/>
+        </symbol>
+      </svg>
+
     <script src="../../data/secrets.js"></script>
     <script src="https://kit.fontawesome.com/a1d3af8fdb.js" crossorigin="anonymous"></script>
     <script src="../index.js"></script>
