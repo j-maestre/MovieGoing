@@ -19,15 +19,14 @@ function SearchMovie(){
 
 function GetUser(){
     let isLogged = localStorage.getItem("islogged");
-    console.log(isLogged);
     let userLogged = null;
     let profile_element = document.createElement("p");
     profile_element.innerHTML = "Login or Singin";
     
     if(isLogged == "true"){
-        console.log("Hay usuario");
+        //console.log("Hay usuario");
         userLogged = JSON.parse(localStorage.getItem("UserLogged"));
-        console.log(userLogged);
+        //console.log(userLogged);
         
         let profile_container = document.getElementById("profile_container");
         profile_container.innerHTML = "";
@@ -40,7 +39,6 @@ function GetUser(){
 
         let profile_pic = document.createElement("img");
         profile_pic.id = "profile_pic"
-        console.log(userLogged.profile_pic)
         profile_pic.src = userLogged.ProfilePic ? userLogged.ProfilePic: "https://thispersondoesnotexist.com/" ;
         //profile_pic.src = "https://thispersondoesnotexist.com/";
         
@@ -64,7 +62,6 @@ function GetUser(){
 }
 
 function AddToList(id){
-    console.log("pa dentro "+ id);
 
     // Comprobar primero si esta logueado
     let logued = localStorage.getItem("islogged");
@@ -75,11 +72,9 @@ function AddToList(id){
 
     let list = []; 
     list = JSON.parse(localStorage.getItem("UserLogged")).List;
-    console.log(list);
 
     // Si no esta en la lista lo añadimos
     if(!isInList(id)){
-        console.log("No esta en la lista");
         // Guardar el id de la film
         if(list != null){
             // Añadimos nuevo id al final
@@ -261,7 +256,7 @@ function PrintMovie(value, container_id = "movies_container"){
     // Description
     let description = document.createElement("a");
     //description.innerHTML = value.overview;
-    description.innerHTML = "Read on filmafinity";
+    description.innerHTML = "Read on filmaffinity";
     description.classList.add("movie_description");
     description.href = filmafinity_path + value.title;
     description.target = "_blank";
@@ -376,7 +371,7 @@ function PrintSerie(value, container_id = "series_container"){
   // Description
   let description = document.createElement("a");
   //description.innerHTML = value.overview;
-  description.innerHTML = "Read on filmafinity";
+  description.innerHTML = "Read on filmaffinity";
   description.classList.add("movie_description");
   description.href = filmafinity_path + value.name;
   description.target = "_blank";

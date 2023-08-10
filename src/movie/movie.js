@@ -19,8 +19,8 @@ function GetVideos(type){
         return response.json();
         
       }).then(function(data) {
-        console.log("VIDEOS")
-        console.log(data.results)
+        //console.log("VIDEOS")
+        //console.log(data.results)
         GetMainTrailer(data.results)
       }).catch(function(err) {
         console.log('Fetch Error :-S', err);
@@ -85,7 +85,6 @@ function SearchTrailer(data, name){
   data.map((value) =>{
     if(value.official === true && value.type == "Trailer"){
       if(value.name == name && value.site == "YouTube"){
-        console.log(value);
         result = value.key;
       }
     }
@@ -103,10 +102,7 @@ function GetInfo(type){
         return response.json();
         
       }).then(function(data) {
-        console.log("movie_details")
         console.log(data)
-        // Hacer distincion
-        
         PrintMovieDetails(data,type);
         
         GetSimilar(type);
@@ -145,7 +141,6 @@ function PrintMovieDetails(data, type){
       status.classList.add("status_waiting");
     }
 
-    console.log(type);
     if(type == "movie"){
       document.getElementById("movie_title").innerHTML = data.title + " (" + data.release_date.substring(0,4) + ")";
     }else{
@@ -239,12 +234,11 @@ function PrintMovieDetails(data, type){
     // Tagline
     document.getElementById("tagline_movie_description").innerHTML = data.tagline;
 
-
     let filmafinity = document.getElementById("movie_filmafinity");
     if(type == "movie"){
       filmafinity.href = filmafinity_path + data.title;
     }else{
-      filmafinity.href = filmafinity_path + data.title;
+      filmafinity.href = filmafinity_path + data.name;
     }
 
     // Translation
@@ -262,8 +256,6 @@ function PrintMovieDetails(data, type){
         return response.json();
         
       }).then(function(data) {
-        console.log(data)
-        console.log(data.results["TW"]);
         
         if(type == "movie"){
           // Hay veces que existe buy, otras que existe flatrate, otras que existe ads y otras que existen todas
