@@ -80,7 +80,7 @@ function GetCartelera(){
       });}
 
 function PrintCartelera(data){
-    console.log(data);
+    //console.log(data);
     max_page = data.total_pages;
     data.results.map((value) =>{
       PrintMovie(value);
@@ -89,7 +89,28 @@ function PrintCartelera(data){
 
 
 
-function PrepareFilters(){
+async function PrepareFilters(){
+  // Pintar los checkbox
+  let genres_container =  document.getElementById("filter_genre_container");
+  let movie_genres = await GetMovieGenres();
+
+
+  movie_genres.map((value) =>{
+    console.log("hola");
+    console.log("genero-> " + value);
+    // <p class="filters_item"><input type="checkbox" id="c1-13" value="Action">Action</p>
+    let p = document.createElement("p");
+    p.classList.add("filters_item");
+    
+    let input = document.createElement("input");
+    input.type = "checkbox";
+    input.id = "c1-13";
+    input.value = value.name;
+    p.appendChild(input);
+    p.innerHTML += value.name;
+    genres_container.appendChild(p);
+  })
+
   const allInputs = document.getElementsByTagName('input');
   const checkboxes = Array.from(allInputs).filter(input => input.type === 'checkbox');
   checkboxes.map( (element) =>{

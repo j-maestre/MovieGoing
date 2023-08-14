@@ -1,14 +1,34 @@
 window.addEventListener('load', onDocumentReady, false);
 
 function onDocumentReady(){
-    console.log("Ready Index");
-    GetUser();
-    document.getElementById("search_button").addEventListener("click",SearchMovie);
-    document.getElementById("input_search").addEventListener("keydown", function(event){
-      if(event.keyCode == 13){
-        SearchMovie();
-      }
-    });
+  console.log("Ready Index");
+  GetUser();
+  document.getElementById("search_button").addEventListener("click",SearchMovie);
+  document.getElementById("input_search").addEventListener("keydown", function(event){
+    if(event.keyCode == 13){
+      SearchMovie();
+    }
+  });
+  //GetMovieGenres();
+}
+
+
+
+async function GetMovieGenres() {
+  try {
+    const response = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=" + api_key);
+    const data = await response.json();
+
+    const movie_genres = data.genres.map(value => ({
+      "name": value.name,
+      "id": value.id
+    }));
+
+    return movie_genres;
+  } catch (err) {
+    console.log('Fetch Error :-S', err);
+    return []; // Devuelve un array vacío en caso de error
+  }
 }
 
 function SearchMovie(){
