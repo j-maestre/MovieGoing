@@ -213,3 +213,21 @@ h1{
 .movie_description:hover::before {
     width: 100%;
 }
+.movies_and_buttons_container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+}
+.page_selector_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+    margin: 60px;
+}
+.page_selector_container *{
+    margin: 10px;
+}
