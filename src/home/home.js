@@ -24,3 +24,7 @@ function PrintCartelera(data){
     })
 }
 
+document.getElementById("random_button").addEventListener("click", function() {
+  
+  window.location.href = "../random/random.html";
+});
