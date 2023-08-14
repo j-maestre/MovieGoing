@@ -135,8 +135,18 @@ var SlideShow = function() {
 
 SlideShow.init();
 
+function Reset(){
+  document.getElementById("fc_user_name").value="";
+  document.getElementById("fc_name").value="";
+  document.getElementById("fc_last_name").value="";
+  document.getElementById("fc_email").value="";
+  document.getElementById("fc_passwd").value="";
+  
+}
 
 function onDocumentReady(){
+
+  document.getElementById("reset_btn").addEventListener("click",Reset);
 
   FillWithUserData();
   let base64Image = false;
